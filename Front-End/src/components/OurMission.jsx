@@ -1,0 +1,21 @@
+import React from "react";
+
+const OurMission = () => {
+  return (
+    <section className="w-[75%] flex justify-between items-center m-auto mt-[60px]">
+      <div className="w-[50%]">
+        <h2 className="text-[38px] font-bold cinzel">Our Mission</h2>
+        <p className="poppins text-[17px] text-[#171717]">
+          Our mission is to promote Quranic knowledge and nurture both spiritual
+          and academic development in students worldwide. With a team of highly
+          qualified and experienced instructors, we provide personalized Quran
+          lessons that cater to the needs of every learner, whether you are a
+          beginner or looking to deepen your understanding of the Quran.
+        </p>
+      </div>
+      <img src="/AboutUs/Mockup-IslamiZone.png" alt="Mockup-IslamiZone" />
+    </section>
+  );
+};
+
+export default OurMission;
