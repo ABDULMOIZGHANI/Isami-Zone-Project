@@ -20,8 +20,10 @@ const Menu = () => {
             <DropdownItem>Courses for Adults</DropdownItem>
             <DropdownItem>Courses for Females</DropdownItem>
             <DropdownItem className="relative group flex">
-              All Courses
-              <FaAngleDown className="ml-2 text-xs mt-[5px]" />
+              <Link to="/all-courses" className="flex">
+                All Courses
+                <FaAngleDown className="ml-2 text-xs mt-[5px]" />
+              </Link>
               <SubDropdown className="group-hover:block">
                 <DropdownItem>Course 1</DropdownItem>
                 <DropdownItem>Course 2</DropdownItem>
