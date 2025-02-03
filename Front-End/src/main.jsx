@@ -6,7 +6,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Home from "./pages/Home.jsx";
 import AboutUs from "./pages/AboutUs.jsx";
 import Courses from "./pages/Courses.jsx";
-import { AppProvider } from "./context/courseContext.js";
+import { AppProvider } from "./context/courseContext.jsx";
 
 const router = createBrowserRouter([
   {
