@@ -7,6 +7,7 @@ import Home from "./pages/Home.jsx";
 import AboutUs from "./pages/AboutUs.jsx";
 import Courses from "./pages/Courses.jsx";
 import { AppProvider } from "./context/courseContext.jsx";
+import SingleCourseDetail from "./components/SingleCourseDetail.jsx";
 
 const router = createBrowserRouter([
   {
@@ -26,9 +27,17 @@ const router = createBrowserRouter([
         element: <AboutUs />,
       },
       {
-        path: "/all-courses",
+        path: "/courses/:courseName",
         element: <Courses />,
       },
+      {
+        path: "/course-detail/:id",
+        element: <SingleCourseDetail />,
+      },
+      // {
+      //   path: "/courses/:id",
+      //   element: <SingleCourseDetail />,
+      // },
     ],
   },
 ]);

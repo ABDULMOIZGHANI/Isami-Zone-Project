@@ -16,11 +16,19 @@ const Menu = () => {
         <MenuList className="relative group flex h-[60px] items-center">
           COURSES <FaAngleDown className="ml-2 mt-[-3px] " />
           <Dropdown className="group-hover:block">
-            <DropdownItem>Courses for Children</DropdownItem>
-            <DropdownItem>Courses for Adults</DropdownItem>
-            <DropdownItem>Courses for Females</DropdownItem>
+            <Link to="/courses/courses-for-childrens">
+              <DropdownItem>Courses for Children</DropdownItem>
+            </Link>
+
+            <Link to="/courses/courses-for-adults">
+              <DropdownItem>Courses for Adults</DropdownItem>
+            </Link>
+
+            <Link to="/courses/courses-for-females">
+              <DropdownItem>Courses for Females</DropdownItem>
+            </Link>
             <DropdownItem className="relative group flex">
-              <Link to="/all-courses" className="flex">
+              <Link to="/courses/AllCourses" className="flex">
                 All Courses
                 <FaAngleDown className="ml-2 text-xs mt-[5px]" />
               </Link>
