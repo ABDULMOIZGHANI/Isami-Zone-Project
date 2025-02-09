@@ -8,6 +8,12 @@ import AboutUs from "./pages/AboutUs.jsx";
 import Courses from "./pages/Courses.jsx";
 import { AppProvider } from "./context/courseContext.jsx";
 import SingleCourseDetail from "./components/SingleCourseDetail.jsx";
+import FAQS from "./pages/FAQS.jsx";
+import Registration from "./pages/Registration.jsx";
+import Fee from "./pages/Fee.jsx";
+import ContactUs from "./pages/ContactUs.jsx";
+import Login from "./pages/Login.jsx";
+import Signup from "./pages/Signup.jsx";
 
 const router = createBrowserRouter([
   {
@@ -34,10 +40,30 @@ const router = createBrowserRouter([
         path: "/course-detail/:id",
         element: <SingleCourseDetail />,
       },
-      // {
-      //   path: "/courses/:id",
-      //   element: <SingleCourseDetail />,
-      // },
+      {
+        path: "/faqs",
+        element: <FAQS />,
+      },
+      {
+        path: "/registration",
+        element: <Registration />,
+      },
+      {
+        path: "/Fees",
+        element: <Fee />,
+      },
+      {
+        path: "/contact-us",
+        element: <ContactUs />,
+      },
+      {
+        path: "/login",
+        element: <Login />,
+      },
+      {
+        path: "/signup",
+        element: <Signup />,
+      },
     ],
   },
 ]);

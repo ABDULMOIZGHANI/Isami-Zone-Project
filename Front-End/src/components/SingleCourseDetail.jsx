@@ -3,6 +3,7 @@ import { useCoursesContext } from "../context/courseContext";
 import { useParams } from "react-router-dom";
 import styled from "styled-components";
 import Button from "./Button";
+import MainSection from "./MainSection";
 
 const SingleCourseDetail = () => {
   const { isLoading, allCourses } = useCoursesContext();
@@ -54,6 +55,8 @@ const SingleCourseDetail = () => {
           </div>
         </div>
       )}
+
+      <MainSection />
     </div>
   );
 };

@@ -40,10 +40,21 @@ const Menu = () => {
             </DropdownItem>
           </Dropdown>
         </MenuList>
-        <MenuList>FAQs</MenuList>
-        <MenuList>REGISTRATION</MenuList>
-        <MenuList>FEE</MenuList>
-        <MenuList>CONTACT US</MenuList>
+        <Link to="/faqs">
+          <MenuList>FAQs</MenuList>
+        </Link>
+
+        <Link to="/registration">
+          <MenuList>REGISTRATION</MenuList>
+        </Link>
+
+        <Link to="/fees">
+          <MenuList>FEE</MenuList>
+        </Link>
+
+        <Link to="contact-us">
+          <MenuList>CONTACT US</MenuList>
+        </Link>
       </ul>
     </menu>
   );
