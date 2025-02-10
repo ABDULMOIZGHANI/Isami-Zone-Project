@@ -3,6 +3,7 @@ import Numbers from "../data/Number.js";
 import Button from "./Button.jsx";
 import Menu from "./Menu.jsx";
 import OutlineBtn from "./OutlineBtn.jsx";
+import { Link, Navigate } from "react-router-dom";
 
 const Header = () => {
   return (
@@ -36,8 +37,13 @@ const Header = () => {
           />
         </div>
         <div className="btn flex gap-[20px]">
-          <Button value={"Login"} />
-          <OutlineBtn value={"SignUp"} />
+          <Link to="/login">
+            <Button value={"Login"} />
+          </Link>
+
+          <Link to="/signup">
+            <OutlineBtn value={"SignUp"} />
+          </Link>
         </div>
       </header>
 
