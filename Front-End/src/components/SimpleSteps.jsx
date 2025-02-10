@@ -12,9 +12,9 @@ const SimpleSteps = () => {
         {steps.map((step, i) => (
           <div
             key={i}
-            className="w-[33%] h-[281px]  bg-[#E9F0EC] border-r-2 border-[#246545] flex  pl-[40px] pr-[40px] pt-[20px] pb-[20px]"
+            className="w-[33%]  bg-[#E9F0EC] border-r-2 border-[#246545] show-display  pl-[40px] pr-[40px] pt-[20px] pb-[20px] justify-center"
           >
-            <h1 className="poppins text-[90px] font-semibold text-[#246545] mr-[12px]">
+            <h1 className="poppins number-size font-semibold text-[#246545] mr-[12px]">
               {step.step}
             </h1>
             <div className="">

@@ -1,1 +1,33 @@
 @import "tailwindcss";
+
+.number-size {
+    font-size: 90px;
+}
+
+.show-display {
+    display: flex;
+}
+
+@media (max-width: 1220px) {
+    .number-size {
+        font-size: 75px;
+    }
+}
+
+
+@media (max-width: 1003px) {
+    .number-size {
+        font-size: 65px;
+    }
+}
+
+@media (max-width: 953px) {
+    .show-display {
+        flex-direction: column;
+        justify-content: flex-start;
+    }
+
+    .number-size {
+        text-align: center;
+    }
+}
