@@ -8,6 +8,10 @@
     display: flex;
 }
 
+ul {
+    margin: auto;
+}
+
 @media (max-width: 1220px) {
     .number-size {
         font-size: 75px;

@@ -37,10 +37,10 @@ const RemarkableBenefits = () => {
   return (
     <section>
       <h1 className="text-center cinzel text-4xl font-bold pt-[100px] pb-[50px]">
-        Begin Your Learning Journey In 3 Simple Steps
+        The Remarkable Benefits of Learning the Quran Online With Us
       </h1>
 
-      <div className="flex w-[85%] m-auto justify-between gap-[10px]">
+      <div className="flex w-[85%] m-auto justify-between gap-[10px] md:flex-row flex-col md:text-left text-center">
         <p className="poppins text-[17px]">
           One of the greatest advantages of learning the Quran online through
           Islami Zone is the unparalleled access to exceptional teachers from

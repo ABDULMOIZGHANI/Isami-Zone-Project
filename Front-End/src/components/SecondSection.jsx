@@ -15,8 +15,8 @@ const SecondSection = () => {
         What is Isami Zone Project?
       </h1>
 
-      <div className="flex w-[68%] m-auto gap-[30px] items-center justify-between mb-[60px]">
-        <p className="poppins text-[19px] text-[#171717]">
+      <div className="flex md:w-[68%] w-[90%] m-auto gap-[30px] items-center justify-between mb-[60px] flex-col md:flex-row">
+        <p className="poppins text-[19px] text-[#171717] md:text-left text-center">
           <b>Islami Zone</b> is an online institute that connects teachers and
           students passionate about learning the Quran, Tajweed, or the Arabic
           language. It offers a unique approach by leveraging custom-built
@@ -28,9 +28,7 @@ const SecondSection = () => {
       </div>
 
       <iframe
-        width="85%"
-        height="600px"
-        className="m-auto mb-[20px]"
+        className="m-auto mb-[20px] md:h-[600px] md:w-[85%] w-[90%] h-[300px]"
         src="https://www.youtube.com/embed/6dqAwh2MCg0"
         title="YouTube video player"
         frameBorder="0"
@@ -51,10 +49,25 @@ const LeftDiv = styled.div`
   position: absolute;
   top: 0;
   left: 0;
+  img {
+    width: 100%;
+    /* max-width: 100px; */
+  }
+  @media (max-width: 768px) {
+    /* display: none; */
+    width: 150px;
+  }
 `;
 
 const RightDiv = styled.div`
   position: absolute;
   top: 0;
   right: 0;
+  img {
+    width: 100%;
+    /* max-width: 100px; */
+  }
+  @media (max-width: 768px) {
+    width: 150px;
+  }
 `;

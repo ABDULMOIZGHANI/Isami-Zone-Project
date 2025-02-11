@@ -26,10 +26,10 @@ const Header = () => {
     <nav className="relative">
       {/* Top Bar with Phone Numbers */}
       <div className="bg-[#1E1E1E]">
-        <div className="w-[100%] md:w-[80%] overflow-hidden flex h-[60px] items-center m-auto">
+        <div className="w-[100%] md:w-[67%] overflow-hidden flex h-[60px] items-center m-auto">
           {isMobileOrTablet ? (
             <motion.ul
-              className="flex min-w-[200%] md:min-w-[150%] space-x-8"
+              className="flex min-w-[200%] md:min-w-[150%]"
               animate={{ x: ["100%", "-100%"] }}
               transition={{ repeat: Infinity, duration: 30, ease: "linear" }}
             >
@@ -108,13 +108,13 @@ const Header = () => {
 
       {/* Mobile Full-Screen Menu */}
       {isMenuOpen && (
-        <div className="fixed inset-0 bg-black bg-opacity-90 z-50 flex flex-col items-center justify-center text-white">
+        <div className="fixed glassyBG bg-opacity-80 z-50 flex flex-col items-center justify-center text-white h-[70%] w-[80%]">
           {/* Close Button */}
           <button
             className="absolute top-5 right-5"
             onClick={() => setIsMenuOpen(false)}
           >
-            <CloseIcon size={36} className="text-white" />
+            <CloseIcon size={36} className="text-[#246545]" />
           </button>
 
           {/* Mobile Menu */}
