@@ -36,7 +36,7 @@ const RemarkableBenefits = () => {
 
   return (
     <section>
-      <h1 className="text-center cinzel text-4xl font-bold pt-[100px] pb-[50px]">
+      <h1 className="w-[90%] md:[85%] text-center m-auto cinzel text-4xl font-bold pt-[100px] pb-[50px]">
         The Remarkable Benefits of Learning the Quran Online With Us
       </h1>
 

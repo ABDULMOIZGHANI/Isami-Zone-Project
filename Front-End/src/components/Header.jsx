@@ -63,12 +63,12 @@ const Header = () => {
         </div>
       </div>
 
-      <header className="flex items-center justify-between w-[85%] m-auto py-4">
+      <header className="flex items-center justify-between w-[90%] md:w-[85%] m-auto py-4">
         {/* Logo */}
         <div className="logo">
           <img
             src={"/ISLAMI ZONE LOGO.png"}
-            className="h-[60px]"
+            className="h-[65px]"
             alt="Islami Zone"
           />
         </div>

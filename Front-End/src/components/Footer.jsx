@@ -10,8 +10,8 @@ import { FaInstagramSquare, FaFacebookSquare, FaYoutube } from "react-icons/fa";
 const Footer = () => {
   return (
     <footer>
-      <div className="h-[400px] bg-[#246545] w-[100%]">
-        <div className="w-[85%] flex justify-between m-auto pt-16 text-white">
+      <div className="md:h-[400px] h-auto bg-[#246545] w-[100%]">
+        <div className="w-[85%] flex justify-between m-auto pt-16 text-white md:flex-row flex-col">
           <div className="About">
             <h2 className="cinzel text-[26px] font-bold mb-6">About Us</h2>
             {AboutUs.map((val) => (
@@ -69,7 +69,7 @@ const Footer = () => {
       </div>
 
       <div className="bg-[#1e1e1e] ">
-        <div className="w-[85%] m-auto h-[104px] flex justify-between items-center">
+        <div className="w-[90%] md:w-[85%] m-auto h-[104px] flex justify-between items-center">
           <h2 className="cinzel text-[26px] font-bold text-[#fff]">
             Islami Zone
           </h2>
@@ -80,10 +80,14 @@ const Footer = () => {
             <FaYoutube className="text-[40px] text-[#fff]" />
           </div>
 
-          <p className="poppins text-[16px] text-[#fff]">
-            Copy right reserves Islami Zone
+          <p className="poppins text-[16px] text-[#fff] hidden md:block">
+            Copyright reserves Islami Zone
           </p>
         </div>
+
+        <p className="poppins text-[16px] text-center pb-[20px] text-[#fff] sm:block md:hidden">
+          Copyright @ Islami Zone (Mobile)
+        </p>
       </div>
     </footer>
   );

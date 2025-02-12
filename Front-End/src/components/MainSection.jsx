@@ -5,10 +5,10 @@ import Button from "./Button";
 const MainSection = () => {
   return (
     <Section>
-      <div className="w-[85%] m-auto h-[100%] flex items-center">
+      <div className="w-[95%] md:w-[85%] xlg:w-[100px] m-auto h-[100%] flex items-center">
         <form
           action=""
-          className="w-[419px] h-[80%] bg-[#fff] rounded-[25px] flex flex-col justify-between pt-[60px] pb-[70px] pr-[20px] pl-[20px]"
+          className="w-[100%] md:w-[419px] h-[500px] sm:h-[550px] md:h-[550px] lg:h-[480px] bg-[#fff] rounded-[25px] flex flex-col justify-between pt-[60px] pb-[70px] pr-[20px] pl-[20px]"
         >
           <h1 className="poppins text-[29px] font-bold text-center">
             Sign up for free trial

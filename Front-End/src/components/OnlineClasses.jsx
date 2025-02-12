@@ -2,7 +2,7 @@ import React from "react";
 
 const OnlineClasses = () => {
   return (
-    <section className="w-[85%] m-auto">
+    <section className="w-[90%] md:w-[85%] m-auto">
       <h1 className="cinzel text-4xl font-bold pt-[120px] pb-[30px] w-[95%] md:w-[70%] md:text-left text-center">
         Online Quran Classes with Tajweed for Both Adults and Children
       </h1>

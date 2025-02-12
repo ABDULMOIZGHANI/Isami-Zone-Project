@@ -16,7 +16,7 @@ const FeedbackForm = () => {
         </h1>
         <form
           action=""
-          className="relative w-[90%] md:w-[669px] z-10 h-auto bg-[#F6F6F6] rounded-[25px] flex flex-col pt-[60px] pb-[70px] pr-[20px] pl-[20px] m-auto shadow-[0_0_20px_10px_rgba(0,0,0,0.25)]"
+          className="relative w-[90%] md:w-[669px] 2xl:w-[800px] z-10 h-auto bg-[#F6F6F6] rounded-[25px] flex flex-col pt-[60px] pb-[70px] pr-[20px] pl-[20px] m-auto shadow-[0_0_20px_10px_rgba(0,0,0,0.25)]"
         >
           <div className="flex flex-col">
             <input
@@ -73,6 +73,9 @@ const MainBox = styled.section`
   background-repeat: no-repeat; /* Prevents repeating */
   width: 100%; /* Ensures full width */
   height: 120vh; /* Adjust as needed */
+  @media (max-width: 768px) {
+    height: 100vh;
+  }
 `;
 
 const Section = styled.section`

@@ -8,11 +8,11 @@ const SimpleSteps = () => {
         BEGIN YOUR LEARNING JOURNEY IN 3 SIMPLE STEPS
       </h1>
 
-      <div className="w-[85%] m-auto flex md:flex-row flex-col">
+      <div className="w-[90%] md:w-[85%] m-auto flex md:flex-row flex-col">
         {steps.map((step, i) => (
           <div
             key={i}
-            className="md:w-[33%] w-[95%] bg-[#E9F0EC] border-b-2 md:border-r-2 border-[#246545] show-display  pl-[40px] pr-[40px] pt-[20px] pb-[20px] justify-center"
+            className="md:w-[33%] w-[100%] bg-[#E9F0EC] border-b-2 md:border-r-2 border-[#246545] show-display  pl-[40px] pr-[40px] pt-[20px] pb-[20px] justify-center"
           >
             <h1 className="poppins number-size font-semibold text-[#246545] mr-[12px]">
               {step.step}

@@ -11,7 +11,7 @@ const SecondSection = () => {
         <img src="/sectionImages/Right Design.png" alt="" />
       </RightDiv>
 
-      <h1 className="text-center cinzel text-4xl font-bold pt-[100px] pb-[50px]">
+      <h1 className="text-center cinzel text-4xl font-bold pt-[100px] pb-[50px] resp">
         What is Isami Zone Project?
       </h1>
 
@@ -57,6 +57,11 @@ const LeftDiv = styled.div`
     /* display: none; */
     width: 150px;
   }
+  @media (max-width: 520px) {
+    /* display: none; */
+    width: 120px;
+    /* padding-bottom: 500px; */
+  }
 `;
 
 const RightDiv = styled.div`
@@ -69,5 +74,10 @@ const RightDiv = styled.div`
   }
   @media (max-width: 768px) {
     width: 150px;
+  }
+  @media (max-width: 520px) {
+    /* display: none; */
+    width: 120px;
+    /* padding-bottom: 500px; */
   }
 `;

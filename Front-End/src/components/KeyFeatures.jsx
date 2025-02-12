@@ -7,7 +7,7 @@ const KeyFeatures = () => {
         Key Features of Our Islami Zone
       </h1>
 
-      <div className="w-[85%] m-auto text-center grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-[10px] auto-rows-fr">
+      <div className="w-[90%] md:w-[85%] m-auto text-center grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-[10px] auto-rows-fr">
         {features.map((feature, i) => (
           <div
             key={i}
