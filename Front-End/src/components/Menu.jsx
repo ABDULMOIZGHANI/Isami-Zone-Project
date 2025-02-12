@@ -5,7 +5,7 @@ import styled from "styled-components";
 
 const Menu = () => {
   return (
-    <menu className="bg-[#246545]">
+    <menu className="md:bg-[#246545]">
       <ul className="md:flex-row flex flex-col items-center justify-between md:w-[85%] w-[100%] m-auto h-[500px] md:h-[60px]">
         <Link to="/home">
           <MenuList>HOME</MenuList>
@@ -73,6 +73,13 @@ const MenuList = styled.li`
   &:hover {
     color: #e2e2e2;
     transition: all 0.4s ease-in-out;
+  }
+
+  @media (max-width: 768px) {
+    color: black;
+    font-size: 17px;
+    font-weight: 700;
+    margin-bottom: 10px;
   }
 `;
 

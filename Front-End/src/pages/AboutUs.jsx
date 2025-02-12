@@ -8,7 +8,7 @@ const AboutUs = () => {
   return (
     <>
       <div>
-        <main className="w-[85%] m-auto">
+        <main className="w-[90%] md:w-[85%] m-auto">
           <h1 className="text-center cinzel text-4xl font-bold pt-[60px] pb-[50px]">
             About Islami Zone
           </h1>
@@ -27,7 +27,7 @@ const AboutUs = () => {
           <img
             src="/AboutUs/AboutUs Section.png"
             alt=""
-            className="block m-auto center mt-[-220px] relative z-[-1]"
+            className="block m-auto center mt-[-100px] md:mt-[-220px] relative z-[-1]"
           />
         </main>
 

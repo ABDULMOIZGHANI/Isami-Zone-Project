@@ -2,8 +2,8 @@ import React from "react";
 
 const OurMission = () => {
   return (
-    <section className="w-[75%] flex justify-between items-center m-auto mt-[60px]">
-      <div className="w-[50%]">
+    <section className="w-[85%] md:w-[75%] flex justify-between items-center m-auto mt-[60px] flex-col md:flex-row ">
+      <div className="w-[100%] md:w-[50%]">
         <h2 className="text-[38px] font-bold cinzel">Our Mission</h2>
         <p className="poppins text-[17px] text-[#171717]">
           Our mission is to promote Quranic knowledge and nurture both spiritual
