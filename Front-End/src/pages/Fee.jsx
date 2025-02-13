@@ -4,8 +4,8 @@ import OutlineBtn from "../components/OutlineBtn";
 
 const Fee = () => {
   return (
-    <div className="flex items-center justify-between w-[85%] m-auto gap-[5px]">
-      <div className="w-[30%] h-[447px] bg-[#e7e7e7] rounded-xl shadow-xl p-5 text-center text-white mt-[40px] mb-[40px]">
+    <div className="flex items-center justify-between md:flex-row flex-col w-[85%] m-auto gap-[5px]">
+      <div className="w-[90%] md:w-[30%] h-[447px] bg-[#e7e7e7] rounded-xl shadow-xl p-5 text-center text-white mt-[40px] mb-[40px]">
         {/* Top Header */}
         <div className="text-2xl font-bold cinzel text-[#171717]">
           Free Trial
@@ -37,7 +37,7 @@ const Fee = () => {
         </div>
       </div>
 
-      <div className="w-[33%] h-[500px]  bg-gradient-to-b from-[#246545] to-[#007245] rounded-xl shadow-xl p-5 text-center text-white mt-[40px] mb-[40px] flex flex-col justify-between">
+      <div className="w-[100%] md:w-[33%] h-[500px]  bg-gradient-to-b from-[#246545] to-[#007245] rounded-xl shadow-xl p-5 text-center text-white mt-[40px] mb-[40px] flex flex-col justify-between">
         {/* Top Header */}
         <div className="text-2xl font-bold cinzel text-[#fff]">Basic Plan</div>
 
@@ -67,7 +67,7 @@ const Fee = () => {
         </div>
       </div>
 
-      <div className="w-[30%] h-[447px]  bg-[#e7e7e7] rounded-xl shadow-xl p-5 text-center text-white mt-[40px] mb-[40px]">
+      <div className="w-[90%] md:w-[30%] h-[447px]  bg-[#e7e7e7] rounded-xl shadow-xl p-5 text-center text-white mt-[40px] mb-[40px]">
         {/* Top Header */}
         <div className="text-2xl font-bold cinzel text-[#171717]">
           Premium Plan

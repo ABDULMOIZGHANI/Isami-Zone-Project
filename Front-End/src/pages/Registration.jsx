@@ -15,8 +15,8 @@ const Registration = () => {
       <LeftStars src="/courses/Lstars.png" alt="" />
       <RightStars src="/courses/Stars.png" alt="" />
 
-      <div className="  w-[85%] m-auto">
-        <h1 className="text-center cinzel text-4xl font-bold pt-[80px] pb-[30px]">
+      <div className="w-[90%]  md:w-[85%] m-auto">
+        <h1 className="text-center cinzel text-4xl font-bold pt-[90px] md:pt-[80px] pb-[30px]">
           Register Now to Get Started
         </h1>
         <p className="text-[18px] text-[#171717] poppins text-center mb-[30px]">
@@ -27,7 +27,7 @@ const Registration = () => {
 
         <form
           action=""
-          className="relative w-[669px] z-10 h-auto bg-[#F6F6F6] rounded-[25px] flex flex-col pt-[60px] pb-[70px] pr-[20px] pl-[20px] m-auto shadow-[0_0_20px_10px_rgba(0,0,0,0.25)]"
+          className="relative w-[100%] md:w-[669px] z-10 h-auto bg-[#F6F6F6] rounded-[25px] flex flex-col pt-[60px] pb-[70px] pr-[20px] pl-[20px] m-auto shadow-[0_0_20px_10px_rgba(0,0,0,0.25)]"
         >
           <div className="flex flex-col">
             <input
@@ -253,10 +253,18 @@ const LeftStars = styled.img`
   position: absolute;
   left: 0px;
   top: 10px;
+  @media (max-width: 768px) {
+    /* display: none; */
+    width: 80px;
+  }
 `;
 
 const RightStars = styled.img`
   position: absolute;
   right: 0px;
   top: 10px;
+  @media (max-width: 768px) {
+    /* display: none; */
+    width: 80px;
+  }
 `;

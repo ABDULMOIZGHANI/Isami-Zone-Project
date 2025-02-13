@@ -12,7 +12,7 @@ const FAQS = () => {
         <RightStars src="/courses/Stars.png" alt="" />
 
         <div className="flex flex-col items-center">
-          <h1 className="text-center cinzel text-4xl font-bold pt-[60px] pb-[20px]">
+          <h1 className="text-center cinzel text-4xl font-bold pt-[90px] md:pt-[60px] pb-[20px]">
             Ask Us Anything
           </h1>
           <p className="text-[18px] text-[#171717] poppins text-center mb-[20px]">
@@ -53,12 +53,20 @@ const LeftStars = styled.img`
   position: absolute;
   left: 0px;
   top: 10px;
+  @media (max-width: 768px) {
+    /* display: none; */
+    width: 80px;
+  }
 `;
 
 const RightStars = styled.img`
   position: absolute;
   right: 0px;
   top: 10px;
+  @media (max-width: 768px) {
+    /* display: none; */
+    width: 80px;
+  }
 `;
 
 const RightStar = styled.img`

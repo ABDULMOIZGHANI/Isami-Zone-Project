@@ -118,8 +118,9 @@ const Header = () => {
           </button>
 
           {/* Mobile Menu */}
-          <Menu />
-
+          <div onClick={() => setIsMenuOpen(false)}>
+            <Menu />
+          </div>
           {/* Login & Signup Buttons */}
           <div className="flex flex-col mt-5 gap-4">
             <Link to="/login" onClick={() => setIsMenuOpen(false)}>

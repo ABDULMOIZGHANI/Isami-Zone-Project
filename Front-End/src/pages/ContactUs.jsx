@@ -27,10 +27,18 @@ const LeftStars = styled.img`
   position: absolute;
   left: 0px;
   top: 10px;
+  @media (max-width: 768px) {
+    /* display: none; */
+    width: 80px;
+  }
 `;
 
 const RightStars = styled.img`
   position: absolute;
   right: 0px;
   top: 10px;
+  @media (max-width: 768px) {
+    /* display: none; */
+    width: 80px;
+  }
 `;
