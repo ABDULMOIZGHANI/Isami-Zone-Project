@@ -1,14 +1,31 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import Button from "./Button";
+import axios from "axios";
 
 const MainSection = () => {
+  const [userName, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [number, setNumber] = useState("");
+
+  const Submit = (e) => {
+    e.preventDefault();
+
+    axios
+      .post("http://localhost:8008/free-trial", { userName, email, number })
+      .then((result) => {
+        console.log(result);
+      })
+      .catch((err) => console.log("ERROR", err));
+  };
+
   return (
     <Section>
       <div className="w-[95%] md:w-[85%] xlg:w-[100px] m-auto h-[100%] flex items-center">
         <form
           action=""
           className="w-[100%] md:w-[419px] h-[500px] sm:h-[550px] md:h-[550px] lg:h-[480px] bg-[#fff] rounded-[25px] flex flex-col justify-between pt-[60px] pb-[70px] pr-[20px] pl-[20px]"
+          onSubmit={Submit}
         >
           <h1 className="poppins text-[29px] font-bold text-center">
             Sign up for free trial
@@ -21,20 +38,23 @@ const MainSection = () => {
               placeholder="Name"
               required
               className="w-[100%] border border-[#B7B7B7] rounded-[7px] pr-[15px] pl-[18px] pt-[10px] pb-[10px] poppins"
+              onChange={(e) => setName(e.target.value)}
             />
             <br />
             <input
-              type="text"
+              type="email"
               placeholder="Email"
               required
               className="w-[100%] border border-[#B7B7B7] rounded-[7px] pr-[15px] pl-[18px] pt-[10px] pb-[10px] poppins"
+              onChange={(e) => setEmail(e.target.value)}
             />
             <br />
             <input
-              type="text"
+              type="number"
               placeholder="Whatsapp Number"
               required
               className="w-[100%] border border-[#B7B7B7] rounded-[7px] pr-[15px] pl-[18px] pt-[10px] pb-[10px] poppins"
+              onChange={(e) => setNumber(e.target.value)}
             />
             <br />
           </div>
