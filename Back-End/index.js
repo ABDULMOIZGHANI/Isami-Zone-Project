@@ -5,11 +5,16 @@ import cors from "cors";
 import { Course } from "./models/all-courses.model.js";
 import { FreeTrial } from "./models/free-trial.model.js";
 import { Testimonial } from "./models/testimonials.model.js";
+import bodyParser from "body-parser";
 dotenv.config({ path: "./env" });
+import authRoutes from "./Routes/AuthRouter.js";
 
 const app = express();
 app.use(cors());
 app.use(express.json());
+app.use(bodyParser.json());
+
+app.use("/auth", authRoutes);
 
 connectDB()
   .then(() => {

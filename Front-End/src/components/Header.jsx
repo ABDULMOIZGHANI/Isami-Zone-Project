@@ -79,7 +79,7 @@ const Header = () => {
             <Button value={"Login"} />
           </Link>
           <Link to="/signup">
-            <OutlineBtn value={"SignUp"} />
+            <OutlineBtn value={"Become a Teacher"} />
           </Link>
         </div>
 
