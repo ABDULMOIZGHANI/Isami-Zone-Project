@@ -1,13 +1,87 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import Button from "../components/Button";
-// import Button from "./Button";
+import { handleError, handleSuccess } from "../components/utils";
+import { useNavigate } from "react-router-dom";
 
 const Registration = () => {
-  const [role, setRole] = useState(""); // To track the selected role
+  const navigate = useNavigate();
+  const [formData, setFormData] = useState({
+    name: "",
+    gender: "",
+    age: "",
+    email: "",
+    country: "",
+    phoneNumber: "",
+    whatsappNumber: "",
+    password: "",
+    confirmPassword: "",
+    guardianName: "",
+    relation: "",
+    language: "",
+    hearAboutUS: "",
+    underWhichTeacher: "",
+    studentDescription: "",
+  });
 
-  const handleRoleChange = (e) => {
-    setRole(e.target.value);
+  const handleChange = (e) => {
+    const { name, value, type, checked } = e.target;
+    // console.log(name, value, type, checked);
+
+    if (type === "checkbox") {
+      setFormData((prev) => ({
+        ...prev,
+        language: checked
+          ? [...prev.language, value]
+          : prev.language.filter((lang) => lang !== value),
+      }));
+    } else {
+      setFormData((prev) => ({
+        ...prev,
+        [name]: value,
+      }));
+    }
+  };
+
+  // console.log(formData);
+
+  // Handle form submit
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // console.log("Final Form Data:", formData); // Log data before sending
+    sendToBackend(formData);
+  };
+
+  const sendToBackend = async (data) => {
+    try {
+      const response = await fetch(
+        "http://localhost:8008/auth/signup/student",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(data),
+        }
+      );
+
+      const result = await response.json();
+      const { success, message, error } = result;
+      if (success) {
+        handleSuccess(message);
+        setTimeout(() => {
+          navigate("/login");
+        }, 1000);
+      } else if (error) {
+        handleError(error);
+      } else {
+        handleError(message);
+      }
+
+      console.log("Response from server:", result);
+    } catch (error) {
+      console.error("Error sending data:", error);
+    }
   };
 
   return (
@@ -26,85 +100,144 @@ const Registration = () => {
         </p>
 
         <form
-          action=""
+          onSubmit={handleSubmit}
           className="relative w-[100%] md:w-[669px] z-10 h-auto bg-[#F6F6F6] rounded-[25px] flex flex-col pt-[60px] pb-[70px] pr-[20px] pl-[20px] m-auto shadow-[0_0_20px_10px_rgba(0,0,0,0.25)]"
         >
+          <h1 className="cinzel text-[20px] font-bold">Student Details</h1>
           <div className="flex flex-col">
             <input
               type="text"
-              name=""
-              id=""
-              placeholder="Enter Your Name"
+              name="name"
+              placeholder="Enter Your Name *"
               required
+              onChange={handleChange}
               className="w-[100%] border border-[#B7B7B7] rounded-[7px] pr-[15px] pl-[18px] pt-[10px] pb-[10px] poppins"
             />
             <br />
             <div className="w-[100%] flex gap-[20px]">
               <input
                 type="text"
-                placeholder="Enter Your Gender"
+                name="gender"
+                placeholder="Enter Your Gender*"
                 required
+                onChange={handleChange}
                 className="w-[50%] border border-[#B7B7B7] rounded-[7px] pr-[15px] pl-[18px] pt-[10px] pb-[10px] poppins"
               />
               <input
                 type="number"
-                placeholder="Enter Your Age"
+                name="age"
+                placeholder="Enter Your Age*"
                 required
                 className="w-[50%] border border-[#B7B7B7] rounded-[7px] pr-[15px] pl-[18px] pt-[10px] pb-[10px] poppins"
+                onChange={handleChange}
+              />
+            </div>
+            <br />
+            <div className="w-[100%] flex gap-[20px]">
+              <input
+                type="email"
+                name="email"
+                placeholder="Email *"
+                required
+                className="w-[50%] border border-[#B7B7B7] rounded-[7px] pr-[15px] pl-[18px] pt-[10px] pb-[10px] poppins"
+                onChange={handleChange}
+              />
+              <input
+                type="text"
+                placeholder="Country *"
+                name="country"
+                required
+                className="w-[50%] border border-[#B7B7B7] rounded-[7px] pr-[15px] pl-[18px] pt-[10px] pb-[10px] poppins"
+                onChange={handleChange}
+              />
+            </div>
+            <br />
+            <div className="w-[100%] flex gap-[20px]">
+              <input
+                type="number"
+                placeholder="Phone Number *"
+                name="phoneNumber"
+                required
+                className="w-[50%] border border-[#B7B7B7] rounded-[7px] pr-[15px] pl-[18px] pt-[10px] pb-[10px] poppins"
+                onChange={handleChange}
+              />
+              <input
+                type="number"
+                placeholder="Whatsapp Number *"
+                name="whatsappNumber"
+                required
+                className="w-[50%] border border-[#B7B7B7] rounded-[7px] pr-[15px] pl-[18px] pt-[10px] pb-[10px] poppins"
+                onChange={handleChange}
               />
             </div>
             <br />
 
             <div className="w-[100%] flex gap-[20px]">
               <input
-                type="text"
-                placeholder="Email"
+                type="password"
+                placeholder="Password *"
+                name="password"
+                autoComplete="new-password"
                 required
                 className="w-[50%] border border-[#B7B7B7] rounded-[7px] pr-[15px] pl-[18px] pt-[10px] pb-[10px] poppins"
+                onChange={handleChange}
               />
               <input
-                type="text"
-                placeholder="Country"
+                type="password"
+                placeholder="Confirm Password *"
+                name="confirmPassword"
+                autoComplete="new-password"
                 required
                 className="w-[50%] border border-[#B7B7B7] rounded-[7px] pr-[15px] pl-[18px] pt-[10px] pb-[10px] poppins"
-              />
-            </div>
-            <br />
-            <div className="w-[100%] flex gap-[20px]">
-              <input
-                type="number"
-                placeholder="Phone Number"
-                required
-                className="w-[50%] border border-[#B7B7B7] rounded-[7px] pr-[15px] pl-[18px] pt-[10px] pb-[10px] poppins"
-              />
-              <input
-                type="number"
-                placeholder="Whatsapp Number"
-                required
-                className="w-[50%] border border-[#B7B7B7] rounded-[7px] pr-[15px] pl-[18px] pt-[10px] pb-[10px] poppins"
+                onChange={handleChange}
               />
             </div>
             <br />
 
-            {/* Language Selection Section */}
+            <h3 className="cinzel text-[20px] font-semibold text-[#171717] mb-[10px]">
+              Guardians Detail
+            </h3>
+            <div className="w-[100%] flex gap-[20px]">
+              <input
+                type="text"
+                placeholder="Guardian Name *"
+                name="guardianName"
+                required
+                onChange={handleChange}
+                className="w-full sm:w-[50%] border border-[#B7B7B7] rounded-[7px] px-[18px] py-[10px] poppins"
+              />
+
+              <select
+                name="relation"
+                value={formData.relation}
+                onChange={handleChange}
+                required
+                className="w-full sm:w-[50%] border border-[#B7B7B7] rounded-[7px] px-[18px] py-[10px] poppins"
+              >
+                <option value="" disabled>
+                  Relation with Student *
+                </option>
+                <option value="father">Father</option>
+                <option value="mother">Mother</option>
+                <option value="guardian">Guardian</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
+            <br />
+
+            {/* LANGUAGES */}
             <div>
               <h3 className="cinzel text-[20px] font-semibold text-[#171717] mb-[10px]">
                 Which Language(s) Do You Speak and Understand?
               </h3>
               <div className="flex flex-wrap gap-4 mb-[20px] poppins text-[#171717] ">
-                {[
-                  "English",
-                  "Urdu",
-                  "Arabic",
-                  "French",
-                  "Spanish",
-                  "German",
-                ].map((language) => (
+                {["English", "Urdu"].map((language) => (
                   <label key={language} className="flex items-center gap-2">
                     <input
                       type="checkbox"
-                      name="languages"
+                      name="language"
                       value={language}
+                      onChange={handleChange}
                       className="w-5 h-5 accent-blue-500"
                     />
                     <span className="text-lg font-medium text-[#171717]">
@@ -114,105 +247,6 @@ const Registration = () => {
                 ))}
               </div>
             </div>
-
-            <h3 className="cinzel text-[20px] font-semibold text-[#171717] mb-[10px]">
-              Register Yourself as a Student or Teacher
-            </h3>
-            <div className="w-[100%] flex gap-[20px]">
-              {/* Student Option */}
-              <label className="flex items-center gap-2">
-                <input
-                  type="radio"
-                  name="role"
-                  value="Student"
-                  checked={role === "Student"}
-                  onChange={handleRoleChange}
-                  className="w-5 h-5 accent-blue-500"
-                />
-                <span className="text-lg font-medium text-[#171717]">
-                  Student
-                </span>
-              </label>
-
-              {/* Teacher Option */}
-              <label className="flex items-center gap-2">
-                <input
-                  type="radio"
-                  name="role"
-                  value="Teacher"
-                  checked={role === "Teacher"}
-                  onChange={handleRoleChange}
-                  className="w-5 h-5 accent-blue-500"
-                />
-                <span className="text-lg font-medium text-[#171717]">
-                  Teacher
-                </span>
-              </label>
-            </div>
-            <br />
-
-            {/* Conditional Fields for Teacher or Student */}
-            {role === "Teacher" ? (
-              <div>
-                {/* Teacher Details */}
-                <h3 className="cinzel text-[20px] font-semibold text-[#171717] mb-[10px]">
-                  Upload Your CV
-                </h3>
-                <input
-                  type="file"
-                  placeholder="Upload your CV"
-                  required
-                  className="w-[100%] border border-[#B7B7B7] rounded-[7px] pr-[15px] pl-[18px] pt-[10px] pb-[10px] mb-[10px] poppins"
-                />
-                <textarea
-                  placeholder="Describe yourself as a Teacher"
-                  required
-                  rows={7}
-                  className="w-[100%] border border-[#B7B7B7] rounded-[7px] pr-[15px] pl-[18px] pt-[10px] pb-[10px] poppins"
-                />
-                <br />
-              </div>
-            ) : role === "Student" ? (
-              <div>
-                {/* Student Details */}
-                <h3 className="cinzel text-[20px] font-semibold text-[#171717] mb-[10px]">
-                  You Studied Under Which Teacher?
-                </h3>
-                <div className="flex gap-4 mb-[10px]">
-                  <label className="flex items-center gap-2">
-                    <input
-                      type="radio"
-                      name="teacher-gender"
-                      value="Male"
-                      className="w-5 h-5 accent-blue-500"
-                    />
-                    <span className="text-lg font-medium text-[#171717]">
-                      Male
-                    </span>
-                  </label>
-                  <label className="flex items-center gap-2">
-                    <input
-                      type="radio"
-                      name="teacher-gender"
-                      value="Female"
-                      className="w-5 h-5 accent-blue-500"
-                    />
-                    <span className="text-lg font-medium text-[#171717]">
-                      Female
-                    </span>
-                  </label>
-                </div>
-                <textarea
-                  placeholder="Describe yourself as a Student"
-                  required
-                  rows={7}
-                  className="w-[100%] border border-[#B7B7B7] rounded-[7px] pr-[15px] pl-[18px] pt-[10px] pb-[10px] poppins"
-                />
-                <br />
-              </div>
-            ) : (
-              <></>
-            )}
 
             {/* "Where did you hear about us?" Dropdown */}
             <div className="w-full max-w-md mb-6">
@@ -224,6 +258,8 @@ const Registration = () => {
               </label>
               <select
                 id="source"
+                onChange={handleChange}
+                name="hearAboutUS"
                 className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
               >
                 <option value="" disabled>
@@ -238,8 +274,50 @@ const Registration = () => {
                 <option value="Other">Other</option>
               </select>
             </div>
-            <br />
+
+            {/* STUDENT */}
+            <div>
+              <h3 className="cinzel text-[20px] font-semibold text-[#171717] mb-[10px]">
+                You Studied Under Which Teacher?
+              </h3>
+              <div className="flex gap-4 mb-[10px]">
+                <label className="flex items-center gap-2">
+                  <input
+                    type="radio"
+                    name="underWhichTeacher"
+                    value="Male"
+                    onChange={handleChange}
+                    className="w-5 h-5 accent-blue-500"
+                  />
+                  <span className="text-lg font-medium text-[#171717]">
+                    Male
+                  </span>
+                </label>
+                <label className="flex items-center gap-2">
+                  <input
+                    type="radio"
+                    name="underWhichTeacher"
+                    value="Female"
+                    onChange={handleChange}
+                    className="w-5 h-5 accent-blue-500"
+                  />
+                  <span className="text-lg font-medium text-[#171717]">
+                    Female
+                  </span>
+                </label>
+              </div>
+              <textarea
+                placeholder="Describe yourself as a Student"
+                required
+                name="studentDescription"
+                rows={7}
+                onChange={handleChange}
+                className="w-[100%] border border-[#B7B7B7] rounded-[7px] pr-[15px] pl-[18px] pt-[10px] pb-[10px] poppins"
+              />
+              <br />
+            </div>
           </div>
+          <br />
           <Button value={"Submit"} />
         </form>
       </div>

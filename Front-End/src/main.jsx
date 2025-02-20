@@ -14,6 +14,7 @@ import Fee from "./pages/Fee.jsx";
 import ContactUs from "./pages/ContactUs.jsx";
 import Login from "./pages/Login.jsx";
 import Signup from "./pages/Signup.jsx";
+import DashboardHome from "./dashboard-components/DashboardHome.jsx";
 
 const router = createBrowserRouter([
   {
@@ -63,6 +64,10 @@ const router = createBrowserRouter([
       {
         path: "/signup",
         element: <Signup />,
+      },
+      {
+        path: "/dashboard/home",
+        element: <DashboardHome />,
       },
     ],
   },

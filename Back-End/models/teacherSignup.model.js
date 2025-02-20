@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-const studentSignupSchema = new mongoose.Schema(
+const teacherSignupSchema = new mongoose.Schema(
   {
     name: {
       type: String,
@@ -35,23 +35,11 @@ const studentSignupSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    guardianName: {
-      type: String,
-      required: true,
-    },
-    relation: {
-      type: String,
-      required: true,
-    },
     language: {
       type: [],
       required: true,
     },
-    underWhichTeacher: {
-      type: String,
-      required: true,
-    },
-    studentDescription: {
+    teacherDescription: {
       type: String,
     },
     hearAboutUS: {
@@ -62,4 +50,4 @@ const studentSignupSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-export const User = mongoose.model("User", studentSignupSchema);
+export const Teacher = mongoose.model("Teacher", teacherSignupSchema);

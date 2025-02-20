@@ -1,6 +1,10 @@
 import bcrypt from "bcrypt";
-import { User } from "../models/studentSignup.model.js";
 import jwt from "jsonwebtoken";
+import { User } from "../models/studentSignup.model.js";
+import { Teacher } from "../models/teacherSignup.model.js"; // ✅ Fixed Typo
+import dotenv from "dotenv";
+
+dotenv.config(); // Load environment variables
 
 const signup = async (req, res) => {
   try {
@@ -13,6 +17,8 @@ const signup = async (req, res) => {
       phoneNumber,
       whatsappNumber,
       password,
+      guardianName,
+      relation,
       language,
       underWhichTeacher,
       studentDescription,
@@ -37,6 +43,8 @@ const signup = async (req, res) => {
       phoneNumber,
       whatsappNumber,
       password: hashedPassword,
+      guardianName,
+      relation,
       language,
       underWhichTeacher,
       studentDescription,
@@ -45,22 +53,89 @@ const signup = async (req, res) => {
 
     await newUser.save();
 
-    res.status(201).json({ message: "Signup successful", user: newUser });
+    res.status(201).json({
+      success: true,
+      message: "Student signup successful",
+      user: newUser,
+    });
   } catch (error) {
-    res.status(500).json({ message: "Signup failed", error: error.message });
+    res.status(500).json({
+      success: false,
+      message: "Student signup failed",
+      error: error.message,
+    });
   }
 };
 
-//
-//
-// LOGIN MAKING
+const teacherSignup = async (req, res) => {
+  try {
+    const {
+      name,
+      email,
+      gender,
+      age,
+      country,
+      phoneNumber,
+      whatsappNumber,
+      password,
+      language,
+      teacherDescription,
+      hearAboutUS,
+    } = req.body;
+
+    const user = await Teacher.findOne({ email });
+    if (user) {
+      return res
+        .status(400)
+        .json({ message: "Email already exists", success: false });
+    }
+
+    const hashedPassword = await bcrypt.hash(password, 10);
+
+    const newUser = new Teacher({
+      name,
+      email,
+      gender,
+      age,
+      country,
+      phoneNumber,
+      whatsappNumber,
+      password: hashedPassword,
+      language,
+      teacherDescription,
+      hearAboutUS,
+    });
+
+    await newUser.save();
+
+    res.status(201).json({
+      success: true,
+      message: "Teacher signup successful",
+      user: newUser,
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: "Teacher signup failed",
+      error: error.message,
+    });
+  }
+};
+
+// ✅ Improved Login Function to Support Both Students & Teachers
 const login = async (req, res) => {
   try {
     const { email, password } = req.body;
 
-    const user = await User.findOne({ email });
+    // Search for user in both collections
+    let user = await User.findOne({ email });
+    let userType = "student";
 
-    // if user's email is not find in databse then show this error
+    if (!user) {
+      user = await Teacher.findOne({ email });
+      userType = "teacher";
+    }
+
     if (!user) {
       return res.status(400).json({
         message: "Invalid email or password",
@@ -68,7 +143,7 @@ const login = async (req, res) => {
       });
     }
 
-    // if passwords match then the user is logedin
+    // Compare passwords
     const isMatch = await bcrypt.compare(password, user.password);
     if (!isMatch) {
       return res.status(400).json({
@@ -79,11 +154,9 @@ const login = async (req, res) => {
 
     // Generate JWT Token
     const token = jwt.sign(
-      { userId: user._id, email: user.email },
-      "your_secret_key",
-      {
-        expiresIn: "7d", // Token expires in 7 days
-      }
+      { userId: user._id, email: user.email, role: userType },
+      process.env.JWT_SECRET, // ✅ Use Environment Variable
+      { expiresIn: "7d" }
     );
 
     res.status(200).json({
@@ -94,6 +167,7 @@ const login = async (req, res) => {
         name: user.name,
         email: user.email,
         gender: user.gender,
+        role: userType, // Indicate whether user is a student or teacher
       },
       token,
     });
@@ -106,4 +180,4 @@ const login = async (req, res) => {
   }
 };
 
-export { signup, login };
+export { signup, login, teacherSignup };

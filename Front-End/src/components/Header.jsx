@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import { Menu as MenuIcon, X as CloseIcon } from "lucide-react"; // Icons
 import Numbers from "../data/Number.js";
@@ -10,6 +10,8 @@ import Menu from "./Menu.jsx";
 const Header = () => {
   const [isMobileOrTablet, setIsMobileOrTablet] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [loggedIn, setLoggedIn] = useState("");
+  const navigate = useNavigate();
 
   useEffect(() => {
     const handleResize = () => {
@@ -21,6 +23,18 @@ const Header = () => {
 
     return () => window.removeEventListener("resize", handleResize);
   }, []);
+
+  useEffect(() => {
+    setLoggedIn(localStorage.getItem("loggedIn"));
+  }, []);
+
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    localStorage.removeItem("name");
+    setTimeout(() => {
+      navigate("/home");
+    }, 1000);
+  };
 
   return (
     <nav className="relative">
@@ -83,6 +97,12 @@ const Header = () => {
           </Link>
         </div>
 
+        <div>
+          <div onClick={handleLogout}>
+            <Button value="Logout" />
+          </div>
+        </div>
+
         {/* Mobile Menu Toggle */}
         <div className="md:hidden">
           {isMenuOpen ? (
@@ -127,7 +147,7 @@ const Header = () => {
               <Button value={"Login"} />
             </Link>
             <Link to="/signup" onClick={() => setIsMenuOpen(false)}>
-              <OutlineBtn value={"SignUp"} />
+              <OutlineBtn value={"Become a Teacher"} />
             </Link>
           </div>
         </div>
