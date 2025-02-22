@@ -8,6 +8,7 @@ import { Testimonial } from "./models/testimonials.model.js";
 import bodyParser from "body-parser";
 dotenv.config({ path: "./env" });
 import authRoutes from "./Routes/AuthRouter.js";
+import { User } from "./models/studentSignup.model.js";
 
 const app = express();
 app.use(cors());
@@ -18,6 +19,13 @@ app.use("/auth", authRoutes);
 
 connectDB()
   .then(() => {
+    // route for getting all students from database
+    app.get("/all-students", (req, res) => {
+      User.find(req.body)
+        .then((users) => res.json(users))
+        .catch((err) => res.json(err));
+    });
+
     // route for sending the testimonial form data to the database
     app.post("/testimonial", (req, res) => {
       Testimonial.create(req.body)

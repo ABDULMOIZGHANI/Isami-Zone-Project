@@ -40,6 +40,15 @@ const CoursesReducer = (state, action) => {
     };
   }
 
+  if (action.type === "ALL_STUDENTS") {
+    return {
+      ...state,
+      isLoading: false,
+      isError: false,
+      allStudents: action.payload,
+    };
+  }
+
   return state;
 };
 

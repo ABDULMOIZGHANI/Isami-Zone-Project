@@ -50,6 +50,8 @@ const Login = () => {
         localStorage.setItem("name", user.name);
         setTimeout(() => {
           navigate("/dashboard/home");
+          // Window.Reload()
+          window.location.reload();
         }, 1000);
       } else if (error) {
         handleError(error);

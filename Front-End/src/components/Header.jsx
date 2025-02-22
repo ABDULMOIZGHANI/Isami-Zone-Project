@@ -10,8 +10,10 @@ import Menu from "./Menu.jsx";
 const Header = () => {
   const [isMobileOrTablet, setIsMobileOrTablet] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [loggedIn, setLoggedIn] = useState("");
+  const [loggedIn, setLoggedIn] = useState(!!localStorage.getItem("token"));
   const navigate = useNavigate();
+
+  // console.log("LOGGED IN VALUE", loggedIn);
 
   useEffect(() => {
     const handleResize = () => {
@@ -24,16 +26,21 @@ const Header = () => {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
+  // Listen for storage changes (in case user logs in/out from another tab)
   useEffect(() => {
-    setLoggedIn(localStorage.getItem("loggedIn"));
-  }, []);
+    const checkAuth = () => {
+      setLoggedIn(!!localStorage.getItem("token"));
+    };
+
+    window.addEventListener("storage", checkAuth);
+    return () => window.removeEventListener("storage", checkAuth);
+  }, [loggedIn]);
 
   const handleLogout = () => {
     localStorage.removeItem("token");
     localStorage.removeItem("name");
-    setTimeout(() => {
-      navigate("/home");
-    }, 1000);
+    setLoggedIn(false);
+    navigate("/home");
   };
 
   return (
@@ -87,20 +94,27 @@ const Header = () => {
           />
         </div>
 
-        {/* Desktop Buttons */}
+        {/* Desktop Buttons - Show Login/Signup if logged out, Logout if logged in */}
         <div className="hidden md:flex gap-[20px]">
-          <Link to="/login">
-            <Button value={"Login"} />
-          </Link>
-          <Link to="/signup">
-            <OutlineBtn value={"Become a Teacher"} />
-          </Link>
-        </div>
-
-        <div>
-          <div onClick={handleLogout}>
-            <Button value="Logout" />
-          </div>
+          {loggedIn ? (
+            <>
+              <div onClick={handleLogout}>
+                <Button value="Logout" />
+              </div>
+              <Link to="/dashboard/home">
+                <OutlineBtn value={"Go To Dashboard"} />
+              </Link>
+            </>
+          ) : (
+            <>
+              <Link to="/login">
+                <Button value={"Login"} />
+              </Link>
+              <Link to="/signup">
+                <OutlineBtn value={"Become a Teacher"} />
+              </Link>
+            </>
+          )}
         </div>
 
         {/* Mobile Menu Toggle */}
@@ -141,14 +155,33 @@ const Header = () => {
           <div onClick={() => setIsMenuOpen(false)}>
             <Menu />
           </div>
-          {/* Login & Signup Buttons */}
+
+          {/* Login & Signup or Logout for Mobile */}
           <div className="flex flex-col mt-5 gap-4">
-            <Link to="/login" onClick={() => setIsMenuOpen(false)}>
-              <Button value={"Login"} />
-            </Link>
-            <Link to="/signup" onClick={() => setIsMenuOpen(false)}>
-              <OutlineBtn value={"Become a Teacher"} />
-            </Link>
+            {loggedIn ? (
+              <div>
+                <div
+                  onClick={() => {
+                    handleLogout();
+                    setIsMenuOpen(false);
+                  }}
+                >
+                  <Button value="Logout" />
+                </div>
+                <Link to="/dashboard/home">
+                  <OutlineBtn value={"Go To Dashboard"} />
+                </Link>
+              </div>
+            ) : (
+              <>
+                <Link to="/login" onClick={() => setIsMenuOpen(false)}>
+                  <Button value={"Login"} />
+                </Link>
+                <Link to="/signup" onClick={() => setIsMenuOpen(false)}>
+                  <OutlineBtn value={"Become a Teacher"} />
+                </Link>
+              </>
+            )}
           </div>
         </div>
       )}

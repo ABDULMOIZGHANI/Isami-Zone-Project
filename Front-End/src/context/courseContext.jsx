@@ -4,6 +4,8 @@ import CoursesReducer from "../reducers/CoursesReducer";
 
 const AppContext = createContext();
 const courseAPI = "http://localhost:8008/all-courses";
+const allStudents = "http://localhost:8008/all-students";
+
 const initialState = {
   isLoading: false,
   isError: false,
@@ -11,6 +13,7 @@ const initialState = {
   coursesForChildrens: [],
   coursesForAdults: [],
   coursesForFemales: [],
+  allStudents: [],
 };
 
 const AppProvider = ({ children }) => {
@@ -29,12 +32,28 @@ const AppProvider = ({ children }) => {
     }
   };
 
+  // fetch all the Students
+  const AllStudents = async (allStudents) => {
+    try {
+      dispatch({ type: "SET_LOADING" });
+      const response = await axios.get(allStudents);
+      const allStudentsData = response.data;
+      console.log(allStudentsData);
+      dispatch({ type: "ALL_STUDENTS", payload: allStudents });
+    } catch (error) {
+      console.log("Error in fetching the all students", error);
+      dispatch({ type: "API_ERROR" });
+    }
+  };
+
   useEffect(() => {
     getCourses(courseAPI);
   }, []);
 
   return (
-    <AppContext.Provider value={{ ...state }}>{children}</AppContext.Provider>
+    <AppContext.Provider value={{ ...state, AllStudents }}>
+      {children}
+    </AppContext.Provider>
   );
 };
 

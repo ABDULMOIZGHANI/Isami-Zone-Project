@@ -6,9 +6,9 @@ import { Link, useParams } from "react-router-dom";
 
 const Courses = () => {
   const { isLoading, allCourses } = useCoursesContext();
-  console.log("ALLCOURSES", allCourses);
+  // console.log("ALLCOURSES", allCourses);
   const { courseName } = useParams();
-  console.log("courseName: ", courseName);
+  // console.log("courseName: ", courseName);
 
   const filteredCourses = [
     "courses-for-childrens",
@@ -17,7 +17,7 @@ const Courses = () => {
   ].includes(courseName)
     ? allCourses.filter((course) => course.category === courseName)
     : allCourses;
-  console.log("FILTER", filteredCourses);
+  // console.log("FILTER", filteredCourses);
 
   return (
     <div className="relative">
