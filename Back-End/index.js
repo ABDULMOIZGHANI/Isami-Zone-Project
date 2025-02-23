@@ -19,9 +19,47 @@ app.use("/auth", authRoutes);
 
 connectDB()
   .then(() => {
+    //delete student by search their ID
+    app.delete("/deleteUser/:id", (req, res) => {
+      const id = req.params.id;
+      User.findByIdAndDelete({ _id: id })
+        .then(() => res.json({ message: "User deleted successfully" }))
+        .catch((err) => res.json(err));
+    });
+
     // route for getting all students from database
     app.get("/all-students", (req, res) => {
       User.find(req.body)
+        .then((users) => res.json(users))
+        .catch((err) => res.json(err));
+    });
+
+    //update value of approve
+    app.put("/approve-testimonial/:id", (req, res) => {
+      try {
+        const id = req.params.id;
+        console.log(id);
+
+        Testimonial.findByIdAndUpdate({ _id: id }, { approve: true })
+          .then((users) => res.json(users))
+          .catch((err) => res.json(err));
+      } catch (error) {
+        console.error("Error updating testimonial:", error);
+        res.status(500).json({ message: "Internal Server Error" });
+      }
+    });
+
+    //delete student by search their ID
+    app.delete("/deleteTestimonial/:id", (req, res) => {
+      const id = req.params.id;
+      Testimonial.findByIdAndDelete({ _id: id })
+        .then(() => res.json({ message: "User deleted successfully" }))
+        .catch((err) => res.json(err));
+    });
+
+    // route for getting all testimonials from database
+    app.get("/testimonials", (req, res) => {
+      Testimonial.find(req.body)
         .then((users) => res.json(users))
         .catch((err) => res.json(err));
     });
@@ -47,7 +85,6 @@ connectDB()
     });
 
     app.listen(process.env.PORT, (req, res) => {
-      //   res.send("HELLOE");
       console.log("SERVER IS RUNNING");
     });
   })

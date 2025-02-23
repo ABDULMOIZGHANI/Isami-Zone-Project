@@ -29,8 +29,14 @@ const DashboardSideBar = () => {
     setOpen(open === value ? 0 : value);
   };
 
+  const [openCourse, setOpenCourse] = React.useState(0);
+
+  const handleOpenCourse = (valuee) => {
+    setOpenCourse(openCourse === valuee ? 0 : valuee);
+  };
+
   return (
-    <Card className="h-[calc(100vh-2rem)] w-full max-w-[20rem] p-4 shadow-xl shadow-blue-gray-900/5 bg-[#e7e7e7]">
+    <Card className="min-h-[calc(100vh-2rem)] max-h-auto w-full max-w-[20rem] p-4 shadow-xl shadow-blue-gray-900/5 bg-[#e7e7e7]">
       <List>
         <Link to="/dashboard/home">
           <Accordion open={open === 1}>
@@ -89,6 +95,54 @@ const DashboardSideBar = () => {
                     <ChevronRightIcon strokeWidth={3} className="h-3 w-5" />
                   </ListItemPrefix>
                   Approved Feedbacks
+                </ListItem>
+              </Link>
+            </List>
+          </AccordionBody>
+        </Accordion>
+
+        <Accordion
+          open={openCourse === 2}
+          icon={
+            <ChevronDownIcon
+              strokeWidth={2.5}
+              className={`mx-auto h-4 w-4 transition-transform ${
+                openCourse === 2 ? "rotate-180" : ""
+              }`}
+            />
+          }
+        >
+          <ListItem className="p-0" selected={openCourse === 2}>
+            <AccordionHeader
+              onClick={() => handleOpenCourse(2)}
+              className="border-b-0 p-3"
+            >
+              <ListItemPrefix>
+                <ShoppingBagIcon className="h-5 w-5" />
+              </ListItemPrefix>
+              <Typography color="blue-gray" className="mr-auto font-normal">
+                Courses
+              </Typography>
+            </AccordionHeader>
+          </ListItem>
+
+          <AccordionBody className="py-1">
+            <List className="p-0">
+              <Link to="/dashboard/all-courses">
+                <ListItem>
+                  <ListItemPrefix>
+                    <ChevronRightIcon strokeWidth={3} className="h-3 w-5" />
+                  </ListItemPrefix>
+                  All Courses
+                </ListItem>
+              </Link>
+
+              <Link to="/dashboard/add-courses">
+                <ListItem>
+                  <ListItemPrefix>
+                    <ChevronRightIcon strokeWidth={3} className="h-3 w-5" />
+                  </ListItemPrefix>
+                  Add Course
                 </ListItem>
               </Link>
             </List>

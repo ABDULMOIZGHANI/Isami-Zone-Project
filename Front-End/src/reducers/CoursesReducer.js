@@ -45,7 +45,16 @@ const CoursesReducer = (state, action) => {
       ...state,
       isLoading: false,
       isError: false,
-      allStudents: action.payload,
+      allStudentsData: action.payload,
+    };
+  }
+
+  if (action.type === "ALL_TESTIMONIALS") {
+    return {
+      ...state,
+      isLoading: false,
+      isError: false,
+      allTestimonialData: action.payload,
     };
   }
 
