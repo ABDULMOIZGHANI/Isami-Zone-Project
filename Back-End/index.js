@@ -78,6 +78,21 @@ connectDB()
         .catch((err) => res.json(err));
     });
 
+    // add a course to database
+    app.post("/addCourses", (req, res) => {
+      Course.create(req.body)
+        .then((users) => res.json(users))
+        .catch((err) => res.json(err));
+    });
+
+    // delete the course
+    app.delete("/coursedelete/:id", (req, res) => {
+      const id = req.params.id;
+      Course.findByIdAndDelete({ _id: id })
+        .then(() => res.json({ message: "User deleted successfully" }))
+        .catch((err) => res.json(err));
+    });
+
     app.get("/all-courses", (req, res) => {
       Course.find(req.body)
         .then((users) => res.json(users))
