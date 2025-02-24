@@ -7,6 +7,7 @@ const courseAPI = "http://localhost:8008/all-courses";
 const allStudents = "http://localhost:8008/all-students";
 const testimonialsURL = "http://localhost:8008/testimonials";
 const allTeachers = "http://localhost:8008/all-teachers";
+const freeTrials = "http://localhost:8008/free-trial";
 
 const initialState = {
   isLoading: false,
@@ -18,6 +19,7 @@ const initialState = {
   allStudentsData: [],
   allTestimonialData: [],
   allTeachersData: [],
+  freeTrialsData: [],
 };
 
 const AppProvider = ({ children }) => {
@@ -46,6 +48,20 @@ const AppProvider = ({ children }) => {
       dispatch({ type: "ALL_STUDENTS", payload: allStudentsData });
     } catch (error) {
       console.log("Error in fetching the all students", error);
+      dispatch({ type: "API_ERROR" });
+    }
+  };
+
+  // fetch all the free trials
+  const FreeTrials = async (url) => {
+    try {
+      dispatch({ type: "SET_LOADING" });
+      const response = await axios.get(freeTrials);
+      const freeTrialsData = response.data;
+      // console.log("from contextt", freeTrialsData);
+      dispatch({ type: "ALL_FREE_TRIALS", payload: freeTrialsData });
+    } catch (error) {
+      console.log("Error in fetching the all Free trials", error);
       dispatch({ type: "API_ERROR" });
     }
   };
@@ -83,10 +99,13 @@ const AppProvider = ({ children }) => {
     AllStudents(allStudents);
     AllTeachers(allTeachers);
     Testimonials(testimonialsURL);
+    FreeTrials(freeTrials);
   }, []);
 
   return (
-    <AppContext.Provider value={{ ...state, AllStudents, Testimonials }}>
+    <AppContext.Provider
+      value={{ ...state, AllStudents, Testimonials, FreeTrials }}
+    >
       {children}
     </AppContext.Provider>
   );

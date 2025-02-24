@@ -67,6 +67,15 @@ const CoursesReducer = (state, action) => {
     };
   }
 
+  if (action.type === "ALL_FREE_TRIALS") {
+    return {
+      ...state,
+      isLoading: false,
+      isError: false,
+      freeTrialsData: action.payload,
+    };
+  }
+
   return state;
 };
 

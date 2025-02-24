@@ -20,17 +20,24 @@ app.use("/auth", authRoutes);
 
 connectDB()
   .then(() => {
+    // route for getting all teacher from database
+    app.get("/all-teachers", (req, res) => {
+      Teacher.find(req.body)
+        .then((users) => res.json(users))
+        .catch((err) => res.json(err));
+    });
+
     //delete teacher by search their ID
     app.delete("/deleteTeacher/:id", (req, res) => {
       const id = req.params.id;
       Teacher.findByIdAndDelete({ _id: id })
-        .then(() => res.json({ message: "Teacher data deleted successfully" }))
+        .then(() => res.json({ message: "User deleted successfully" }))
         .catch((err) => res.json(err));
     });
 
-    // route for getting all teachers from database
-    app.get("/all-teachers", (req, res) => {
-      Teacher.find(req.body)
+    // route for getting all students from database
+    app.get("/all-students", (req, res) => {
+      User.find(req.body)
         .then((users) => res.json(users))
         .catch((err) => res.json(err));
     });
@@ -83,6 +90,21 @@ connectDB()
     // route for sending the testimonial form data to the database
     app.post("/testimonial", (req, res) => {
       Testimonial.create(req.body)
+        .then((users) => res.json(users))
+        .catch((err) => res.json(err));
+    });
+
+    // route for deleting the free trial form data to the database
+    app.delete("/free-trial/:id", (req, res) => {
+      const id = req.params.id;
+      FreeTrial.findByIdAndDelete({ _id: id })
+        .then(() => res.json({ message: "Free Trial deleted successfully" }))
+        .catch((err) => res.json(err));
+    });
+
+    // route for sending the free trial form data to the database
+    app.get("/free-trial", (req, res) => {
+      FreeTrial.find(req.body)
         .then((users) => res.json(users))
         .catch((err) => res.json(err));
     });
