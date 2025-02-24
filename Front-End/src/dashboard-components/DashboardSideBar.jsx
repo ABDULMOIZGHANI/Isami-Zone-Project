@@ -172,7 +172,16 @@ const DashboardSideBar = () => {
             <ListItemPrefix>
               <UserCircleIcon className="h-5 w-5" />
             </ListItemPrefix>
-            All Teachers
+            Our Teachers
+          </ListItem>
+        </Link>
+
+        <Link to="/dashboard/free-trial">
+          <ListItem>
+            <ListItemPrefix>
+              <UserCircleIcon className="h-5 w-5" />
+            </ListItemPrefix>
+            Free Trials List
           </ListItem>
         </Link>
       </List>

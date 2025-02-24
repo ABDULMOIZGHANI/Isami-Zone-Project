@@ -9,6 +9,7 @@ import bodyParser from "body-parser";
 dotenv.config({ path: "./env" });
 import authRoutes from "./Routes/AuthRouter.js";
 import { User } from "./models/studentSignup.model.js";
+import { Teacher } from "./models/teacherSignup.model.js";
 
 const app = express();
 app.use(cors());
@@ -19,6 +20,21 @@ app.use("/auth", authRoutes);
 
 connectDB()
   .then(() => {
+    //delete teacher by search their ID
+    app.delete("/deleteTeacher/:id", (req, res) => {
+      const id = req.params.id;
+      Teacher.findByIdAndDelete({ _id: id })
+        .then(() => res.json({ message: "Teacher data deleted successfully" }))
+        .catch((err) => res.json(err));
+    });
+
+    // route for getting all teachers from database
+    app.get("/all-teachers", (req, res) => {
+      Teacher.find(req.body)
+        .then((users) => res.json(users))
+        .catch((err) => res.json(err));
+    });
+
     //delete student by search their ID
     app.delete("/deleteUser/:id", (req, res) => {
       const id = req.params.id;

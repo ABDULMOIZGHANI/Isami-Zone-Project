@@ -31,6 +31,14 @@ const teacherSignupSchema = new mongoose.Schema(
       type: Number,
       required: true,
     },
+    CNIC: {
+      type: Number,
+      required: true,
+    },
+    experience: {
+      type: Number,
+      required: true,
+    },
     password: {
       type: String,
       required: true,

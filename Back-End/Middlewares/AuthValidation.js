@@ -12,6 +12,11 @@ const studentValidationSchema = Joi.object({
   whatsappNumber: Joi.string()
     .pattern(/^[0-9]{10,15}$/)
     .required(),
+  whatsappNumber: Joi.string()
+    .pattern(/^[0-9]{10,15}$/)
+    .required(),
+  CNIC: Joi.string().min(12).max(20).required(),
+  experience: Joi.string().required(),
   password: Joi.string().min(6).required(),
   confirmPassword: Joi.string().valid(Joi.ref("password")).required(),
   guardianName: Joi.string().min(3).max(50).required(),
@@ -34,6 +39,8 @@ const teacherValidationSchema = Joi.object({
   whatsappNumber: Joi.string()
     .pattern(/^[0-9]{10,15}$/)
     .required(),
+  CNIC: Joi.string().min(12).max(20).required(),
+  experience: Joi.string().required(),
   password: Joi.string().min(6).required(),
   confirmPassword: Joi.string().valid(Joi.ref("password")).required(),
   language: Joi.array().items(Joi.string()).required(),

@@ -14,6 +14,8 @@ const Registration = () => {
     country: "",
     phoneNumber: "",
     whatsappNumber: "",
+    CNIC: "",
+    experience: "",
     password: "",
     confirmPassword: "",
     language: "",
@@ -105,7 +107,7 @@ const Registration = () => {
             <input
               type="text"
               name="name"
-              placeholder="Enter Your Name *"
+              placeholder="Enter Your Full Name *"
               required
               onChange={handleChange}
               className="w-[100%] border border-[#B7B7B7] rounded-[7px] pr-[15px] pl-[18px] pt-[10px] pb-[10px] poppins"
@@ -115,7 +117,7 @@ const Registration = () => {
               <input
                 type="text"
                 name="gender"
-                placeholder="Enter Your Gender*"
+                placeholder="Enter Your Gender *"
                 required
                 onChange={handleChange}
                 className="w-[50%] border border-[#B7B7B7] rounded-[7px] pr-[15px] pl-[18px] pt-[10px] pb-[10px] poppins"
@@ -123,7 +125,7 @@ const Registration = () => {
               <input
                 type="number"
                 name="age"
-                placeholder="Enter Your Age*"
+                placeholder="Enter Your Age *"
                 required
                 className="w-[50%] border border-[#B7B7B7] rounded-[7px] pr-[15px] pl-[18px] pt-[10px] pb-[10px] poppins"
                 onChange={handleChange}
@@ -162,6 +164,27 @@ const Registration = () => {
                 type="number"
                 placeholder="Whatsapp Number *"
                 name="whatsappNumber"
+                required
+                className="w-[50%] border border-[#B7B7B7] rounded-[7px] pr-[15px] pl-[18px] pt-[10px] pb-[10px] poppins"
+                onChange={handleChange}
+              />
+            </div>
+            <br />
+
+            <div className="w-[100%] flex gap-[20px]">
+              <input
+                type="number"
+                placeholder="Enter Your CNIC Number *"
+                name="CNIC"
+                required
+                className="w-[50%] border border-[#B7B7B7] rounded-[7px] pr-[15px] pl-[18px] pt-[10px] pb-[10px] poppins"
+                onChange={handleChange}
+              />
+              <input
+                type="number"
+                placeholder="Years of Experience *"
+                name="experience"
+                autoComplete="new-password"
                 required
                 className="w-[50%] border border-[#B7B7B7] rounded-[7px] pr-[15px] pl-[18px] pt-[10px] pb-[10px] poppins"
                 onChange={handleChange}

@@ -49,6 +49,15 @@ const CoursesReducer = (state, action) => {
     };
   }
 
+  if (action.type === "ALL_TEACHERS") {
+    return {
+      ...state,
+      isLoading: false,
+      isError: false,
+      allTeachersData: action.payload,
+    };
+  }
+
   if (action.type === "ALL_TESTIMONIALS") {
     return {
       ...state,

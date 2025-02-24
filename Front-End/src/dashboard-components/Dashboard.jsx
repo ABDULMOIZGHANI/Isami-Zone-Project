@@ -7,6 +7,8 @@ import Feedback from "./Feedback";
 import ApprovedFeedbacks from "./ApprovedFeedbacks";
 import AllCourses from "./AllCourses";
 import AddCourse from "./AddCourse";
+import FreeTrial from "./FreeTrial";
+import AllTeachers from "./AllTeachers";
 
 const Dashboard = () => {
   const [userName, setUserName] = useState("");
@@ -27,7 +29,8 @@ const Dashboard = () => {
         {page === "all-courses" && <AllCourses />}
         {page === "add-courses" && <AddCourse />}
         {page === "all-students" && <AllStudents />}
-        {page === "all-teachers" && "THIS IS ALL TEACHERS PAGE"}
+        {page === "all-teachers" && <AllTeachers />}
+        {page === "free-trial" && <FreeTrial />}
       </div>
     </main>
   );

@@ -77,6 +77,8 @@ const teacherSignup = async (req, res) => {
       country,
       phoneNumber,
       whatsappNumber,
+      CNIC,
+      experience,
       password,
       language,
       teacherDescription,
@@ -100,6 +102,8 @@ const teacherSignup = async (req, res) => {
       country,
       phoneNumber,
       whatsappNumber,
+      CNIC,
+      experience,
       password: hashedPassword,
       language,
       teacherDescription,
@@ -122,7 +126,7 @@ const teacherSignup = async (req, res) => {
   }
 };
 
-// ✅ Improved Login Function to Support Both Students & Teachers
+//  Improved Login Function to Support Both Students & Teachers
 const login = async (req, res) => {
   try {
     const { email, password } = req.body;
@@ -155,7 +159,7 @@ const login = async (req, res) => {
     // Generate JWT Token
     const token = jwt.sign(
       { userId: user._id, email: user.email, role: userType },
-      process.env.JWT_SECRET, // ✅ Use Environment Variable
+      process.env.JWT_SECRET,
       { expiresIn: "7d" }
     );
 
@@ -167,7 +171,7 @@ const login = async (req, res) => {
         name: user.name,
         email: user.email,
         gender: user.gender,
-        role: userType, // Indicate whether user is a student or teacher
+        role: userType,
       },
       token,
     });

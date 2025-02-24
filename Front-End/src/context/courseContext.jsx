@@ -6,6 +6,7 @@ const AppContext = createContext();
 const courseAPI = "http://localhost:8008/all-courses";
 const allStudents = "http://localhost:8008/all-students";
 const testimonialsURL = "http://localhost:8008/testimonials";
+const allTeachers = "http://localhost:8008/all-teachers";
 
 const initialState = {
   isLoading: false,
@@ -16,6 +17,7 @@ const initialState = {
   coursesForFemales: [],
   allStudentsData: [],
   allTestimonialData: [],
+  allTeachersData: [],
 };
 
 const AppProvider = ({ children }) => {
@@ -48,6 +50,20 @@ const AppProvider = ({ children }) => {
     }
   };
 
+  // fetch all the Teachers
+  const AllTeachers = async (url) => {
+    try {
+      dispatch({ type: "SET_LOADING" });
+      const response = await axios.get(allTeachers);
+      const allTeachersData = response.data;
+      console.log("from contextt", allTeachersData);
+      dispatch({ type: "ALL_TEACHERS", payload: allTeachersData });
+    } catch (error) {
+      console.log("Error in fetching the all teachers", error);
+      dispatch({ type: "API_ERROR" });
+    }
+  };
+
   // fetch all the testimonials
   const Testimonials = async (url) => {
     try {
@@ -65,6 +81,7 @@ const AppProvider = ({ children }) => {
   useEffect(() => {
     getCourses(courseAPI);
     AllStudents(allStudents);
+    AllTeachers(allTeachers);
     Testimonials(testimonialsURL);
   }, []);
 
