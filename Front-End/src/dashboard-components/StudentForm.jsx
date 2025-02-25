@@ -1,14 +1,19 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Button from "../components/Button";
 import { handleError, handleSuccess } from "../components/utils";
 import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import { useCoursesContext } from "../context/courseContext";
+import OutlineBtn from "../components/OutlineBtn";
+import html2canvas from "html2canvas";
+import jsPDF from "jspdf";
+import html2pdf from "html2pdf.js";
 
 const StudentForm = () => {
   const navigate = useNavigate();
   const { id } = useParams();
   const { isLoading, allStudentsData } = useCoursesContext();
+  const formRef = useRef(null); // Ref to capture the form content
 
   const [formData, setFormData] = useState({
     name: "",
@@ -32,7 +37,6 @@ const StudentForm = () => {
   });
 
   const existingStudent = allStudentsData.find((student) => student._id === id);
-  console.log(existingStudent);
 
   useEffect(() => {
     if (existingStudent) {
@@ -60,6 +64,24 @@ const StudentForm = () => {
   if (isLoading || !existingStudent) {
     return <p>Loading...</p>; // or any loading spinner component
   }
+
+  console.log(existingStudent);
+  const date = new Date(existingStudent.createdAt);
+  console.log("DATE", date);
+
+  // Format the date and time
+  const formattedDate = date.toLocaleDateString("en-US", {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  });
+
+  const formattedTime = date.toLocaleTimeString("en-US", {
+    hour: "2-digit",
+    minute: "2-digit",
+    second: "2-digit",
+    hour12: true, // Use 12-hour format (AM/PM)
+  });
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
@@ -109,14 +131,79 @@ const StudentForm = () => {
     }
   };
 
+  // Function to handle PDF download
+  // const handleDownloadPDF = () => {
+  //   const input = formRef.current; // Reference to the form element
+  //   console.log("Form HTML:", input.innerHTML);
+  //   html2canvas(input, {
+  //     scale: 2, // Increase scale for better quality
+  //     useCORS: true, // Handle cross-origin images if any
+  //   })
+  //     .then((canvas) => {
+  //       const imgData = canvas.toDataURL("image/png");
+  //       const pdf = new jsPDF("p", "mm", "a4"); // A4 size PDF
+  //       const imgWidth = 210; // A4 width in mm
+  //       const imgHeight = (canvas.height * imgWidth) / canvas.width;
+
+  //       pdf.addImage(imgData, "PNG", 0, 0, imgWidth, imgHeight);
+  //       pdf.save("student_form.pdf"); // Download the PDF
+  //     })
+  //     .catch((error) => {
+  //       console.error("Error generating PDF:", error);
+  //       handleError(
+  //         "Failed to generate PDF. Please check the console for details."
+  //       );
+  //     });
+  // };
+
+  const handleDownloadImage = () => {
+    const formElement = document.querySelector("#studentForm");
+    if (!formElement) {
+      console.error("Form element not found!");
+      handleError("Form element not found. Please check the ID.");
+      return;
+    }
+
+    // Use html2canvas to capture the form as an image
+    html2canvas(formElement, {
+      scale: 2, // Increase scale for better quality
+      useCORS: true, // Handle cross-origin images if any
+      logging: true, // Enable logging for debugging
+      allowTaint: true, // Allow tainted canvas
+    })
+      .then((canvas) => {
+        // Convert the canvas to an image URL
+        const imageURL = canvas.toDataURL("image/png");
+
+        // Create a temporary link to download the image
+        const link = document.createElement("a");
+        link.href = imageURL;
+        link.download = "student_form.png"; // File name
+        document.body.appendChild(link);
+        link.click(); // Trigger the download
+        document.body.removeChild(link); // Clean up
+      })
+      .catch((error) => {
+        console.error("Error generating image:", error);
+        handleError(
+          "Failed to generate image. Please check the console for details."
+        );
+      });
+  };
+
   return (
     <div>
       <form
         onSubmit={handleSubmit}
+        ref={formRef}
+        id="studentForm"
         className="relative w-[100%]  z-10 h-auto bg-[#F6F6F6] rounded-[25px] flex flex-col pt-[60px] pb-[70px] pr-[20px] pl-[20px] m-auto shadow-[0_0_20px_10px_rgba(0,0,0,0.25)]"
       >
         <h1 className="cinzel text-[20px] font-bold">Student Details</h1>
         <div className="flex flex-col">
+          <label className="font-bold" htmlFor="name">
+            Student Full Name
+          </label>
           <input
             type="text"
             name="name"
@@ -127,72 +214,118 @@ const StudentForm = () => {
             className="w-[100%] border border-[#B7B7B7] rounded-[7px] pr-[15px] pl-[18px] pt-[10px] pb-[10px] poppins"
           />
           <br />
+
           <div className="w-[100%] flex gap-[20px]">
-            <input
-              type="text"
-              name="gender"
-              value={formData.gender}
-              placeholder="Enter Your Gender*"
-              required
-              onChange={handleChange}
-              className="w-[50%] border border-[#B7B7B7] rounded-[7px] pr-[15px] pl-[18px] pt-[10px] pb-[10px] poppins"
-            />
-            <input
-              type="number"
-              name="age"
-              value={formData.age}
-              placeholder="Enter Your Age*"
-              required
-              className="w-[50%] border border-[#B7B7B7] rounded-[7px] pr-[15px] pl-[18px] pt-[10px] pb-[10px] poppins"
-              onChange={handleChange}
-            />
+            <div className="w-[100%]">
+              <label className="font-bold" htmlFor="gender">
+                Student Gender
+              </label>
+              <br />
+              <input
+                type="text"
+                name="gender"
+                value={formData.gender}
+                placeholder="Enter Your Gender*"
+                required
+                onChange={handleChange}
+                className="w-[100%] border border-[#B7B7B7] rounded-[7px] pr-[15px] pl-[18px] pt-[10px] pb-[10px] poppins"
+              />
+            </div>
+
+            <div className="w-[100%]">
+              <label className="font-bold" htmlFor="gender">
+                Student Age
+              </label>
+              <br />
+              <input
+                type="number"
+                name="age"
+                value={formData.age}
+                placeholder="Enter Your Age*"
+                required
+                className="w-[100%] border border-[#B7B7B7] rounded-[7px] pr-[15px] pl-[18px] pt-[10px] pb-[10px] poppins"
+                onChange={handleChange}
+              />
+            </div>
           </div>
           <br />
+
           <div className="w-[100%] flex gap-[20px]">
-            <input
-              type="email"
-              name="email"
-              value={formData.email}
-              placeholder="Email *"
-              required
-              className="w-[50%] border border-[#B7B7B7] rounded-[7px] pr-[15px] pl-[18px] pt-[10px] pb-[10px] poppins"
-              onChange={handleChange}
-            />
-            <input
-              type="text"
-              placeholder="Country *"
-              name="country"
-              value={formData.country}
-              required
-              className="w-[50%] border border-[#B7B7B7] rounded-[7px] pr-[15px] pl-[18px] pt-[10px] pb-[10px] poppins"
-              onChange={handleChange}
-            />
+            <div className="w-[100%]">
+              <label className="font-bold" htmlFor="email">
+                Student Email
+              </label>{" "}
+              <br />
+              <input
+                type="email"
+                name="email"
+                value={formData.email}
+                placeholder="Email *"
+                required
+                className="w-[100%] border border-[#B7B7B7] rounded-[7px] pr-[15px] pl-[18px] pt-[10px] pb-[10px] poppins"
+                onChange={handleChange}
+              />
+            </div>
+
+            <div className="w-[100%]">
+              <label className="font-bold" htmlFor="country">
+                Student's Country
+              </label>{" "}
+              <br />
+              <input
+                type="text"
+                placeholder="Country *"
+                name="country"
+                value={formData.country}
+                required
+                className="w-[100%] border border-[#B7B7B7] rounded-[7px] pr-[15px] pl-[18px] pt-[10px] pb-[10px] poppins"
+                onChange={handleChange}
+              />
+            </div>
           </div>
+
           <br />
+
           <div className="w-[100%] flex gap-[20px]">
-            <input
-              type="number"
-              placeholder="Phone Number *"
-              name="phoneNumber"
-              value={formData.phoneNumber}
-              required
-              className="w-[50%] border border-[#B7B7B7] rounded-[7px] pr-[15px] pl-[18px] pt-[10px] pb-[10px] poppins"
-              onChange={handleChange}
-            />
-            <input
-              type="number"
-              placeholder="Whatsapp Number *"
-              name="whatsappNumber"
-              value={formData.whatsappNumber}
-              required
-              className="w-[50%] border border-[#B7B7B7] rounded-[7px] pr-[15px] pl-[18px] pt-[10px] pb-[10px] poppins"
-              onChange={handleChange}
-            />
+            <div className="w-[100%]">
+              <label className="font-bold" htmlFor="phoneNumber">
+                Student Phone Number
+              </label>
+              <br />
+              <input
+                type="number"
+                placeholder="Phone Number *"
+                name="phoneNumber"
+                value={formData.phoneNumber}
+                required
+                className="w-[100%] border border-[#B7B7B7] rounded-[7px] pr-[15px] pl-[18px] pt-[10px] pb-[10px] poppins"
+                onChange={handleChange}
+              />
+            </div>
+
+            <div className="w-[100%]">
+              <label className="font-bold" htmlFor="whatsappNumber">
+                Student WhatsApp Number
+              </label>
+              <br />
+              <input
+                type="number"
+                placeholder="Whatsapp Number *"
+                name="whatsappNumber"
+                value={formData.whatsappNumber}
+                required
+                className="w-[100%] border border-[#B7B7B7] rounded-[7px] pr-[15px] pl-[18px] pt-[10px] pb-[10px] poppins"
+                onChange={handleChange}
+              />
+            </div>
           </div>
           <br />
 
           <div className="w-[100%] flex gap-[20px]">
             <div className="w-[50%]">
+              <label className="font-bold" htmlFor="phoneNumber">
+                Your Timings
+              </label>
               <div>
                 <input
                   type="text"
@@ -206,6 +339,9 @@ const StudentForm = () => {
               </div>
               <br />
               <div>
+                <label className="font-bold" htmlFor="phoneNumber">
+                  Teacher Name
+                </label>
                 <input
                   type="text"
                   placeholder="Enter Teacher Name *"
@@ -331,9 +467,19 @@ const StudentForm = () => {
             <br />
           </div>
         </div>
+        <p>
+          <strong>Registered At :</strong>
+          {`${formattedDate} at ${formattedTime}`}
+        </p>
         <br />
         <Button value={"Update"} />
       </form>
+      <div
+        className="flex items-center justify-center m-10"
+        onClick={handleDownloadImage}
+      >
+        <OutlineBtn value="Download" />
+      </div>
     </div>
   );
 };

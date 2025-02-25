@@ -39,6 +39,7 @@ const Header = () => {
   const handleLogout = () => {
     localStorage.removeItem("token");
     localStorage.removeItem("name");
+    localStorage.removeItem("user_id");
     setLoggedIn(false);
     navigate("/home");
   };
