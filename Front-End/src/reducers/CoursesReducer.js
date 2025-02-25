@@ -76,6 +76,15 @@ const CoursesReducer = (state, action) => {
     };
   }
 
+  if (action.type === "UPDATE_STUDENT") {
+    return {
+      ...state,
+      isLoading: false,
+      isError: false,
+      updateStudentData: action.payload,
+    };
+  }
+
   return state;
 };
 

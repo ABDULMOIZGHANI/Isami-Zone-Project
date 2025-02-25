@@ -9,15 +9,16 @@ import AllCourses from "./AllCourses";
 import AddCourse from "./AddCourse";
 import FreeTrial from "./FreeTrial";
 import AllTeachers from "./AllTeachers";
+import StudentForm from "./StudentForm";
 
 const Dashboard = () => {
   const [userName, setUserName] = useState("");
-  const { page } = useParams();
-  console.log(page);
+  const { page, value, id } = useParams();
+  const page2 = `${page}/${value}`;
 
   useEffect(() => {
     setUserName(localStorage.getItem("name"));
-  }, []);
+  }, [value, useParams()]);
 
   return (
     <main className="flex">
@@ -28,7 +29,8 @@ const Dashboard = () => {
         {page === "approved-feedbacks" && <ApprovedFeedbacks />}
         {page === "all-courses" && <AllCourses />}
         {page === "add-courses" && <AddCourse />}
-        {page === "all-students" && <AllStudents />}
+        {page2 === "all-students/student-form" && <StudentForm />}
+        {`${page}/${value}` === "all-students/undefined" && <AllStudents />}
         {page === "all-teachers" && <AllTeachers />}
         {page === "free-trial" && <FreeTrial />}
       </div>

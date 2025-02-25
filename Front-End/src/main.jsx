@@ -69,6 +69,10 @@ const router = createBrowserRouter([
         path: "/dashboard/:page",
         element: <Dashboard />,
       },
+      {
+        path: "/dashboard/:page/:value/:id",
+        element: <Dashboard />,
+      },
     ],
   },
 ]);

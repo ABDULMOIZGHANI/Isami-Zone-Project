@@ -3,6 +3,7 @@ import { useCoursesContext } from "../context/courseContext";
 import { IconButton } from "@material-tailwind/react";
 import Button from "../components/Button";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 const AllStudents = () => {
   const { isLoading, allStudentsData } = useCoursesContext();
@@ -49,10 +50,13 @@ const AllStudents = () => {
                 <p class="poppins text-[#555] text-sm mt-2">
                   Number: {student.phoneNumber}
                 </p>
-
-                <div className="mt-[10px] m-auto">
-                  <Button value="About Student" />
-                </div>
+                <Link
+                  to={`/dashboard/all-students/student-form/${student._id}`}
+                >
+                  <div className="mt-[10px] m-auto">
+                    <Button value="About Student" />
+                  </div>
+                </Link>
               </div>
             ))}
       </div>

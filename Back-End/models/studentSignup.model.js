@@ -58,6 +58,16 @@ const studentSignupSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
+    days: {
+      type: [String],
+      default: [],
+    },
+    timing: {
+      type: [],
+    },
+    teacher: {
+      type: [],
+    },
   },
   { timestamps: true }
 );

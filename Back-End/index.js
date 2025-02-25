@@ -20,6 +20,48 @@ app.use("/auth", authRoutes);
 
 connectDB()
   .then(() => {
+    app.put("/students/update/:id", async (req, res) => {
+      const { id } = req.params; // Get the student ID from the URL
+      const updatedData = req.body; // Get the updated data from the request body
+
+      try {
+        // Find the student by ID and update their data
+        const updatedStudent = await User.findByIdAndUpdate(id, updatedData, {
+          new: true, // Return the updated document
+          runValidators: true, // Run schema validators on update
+        });
+
+        if (!updatedStudent) {
+          return res.status(404).json({
+            success: false,
+            message: "Student not found",
+          });
+        }
+
+        // Send a success response with the updated student data
+        res.status(200).json({
+          success: true,
+          message: "Student updated successfully",
+          data: updatedStudent,
+        });
+      } catch (error) {
+        console.error("Error updating student:", error);
+        res.status(500).json({
+          success: false,
+          message: "Failed to update student",
+          error: error.message,
+        });
+      }
+    });
+
+    // get a signle user to update bya an admin
+    app.get("/updateStudent", (req, res) => {
+      const id = req.params.id;
+      User.findById({ _id: id })
+        .then((user) => res.json(user))
+        .catch((err) => res.json(err));
+    });
+
     // route for getting all teacher from database
     app.get("/all-teachers", (req, res) => {
       Teacher.find(req.body)
