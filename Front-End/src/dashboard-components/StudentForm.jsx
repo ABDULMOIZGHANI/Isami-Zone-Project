@@ -4,10 +4,6 @@ import { handleError, handleSuccess } from "../components/utils";
 import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import { useCoursesContext } from "../context/courseContext";
-import OutlineBtn from "../components/OutlineBtn";
-import html2canvas from "html2canvas";
-import jsPDF from "jspdf";
-import html2pdf from "html2pdf.js";
 
 const StudentForm = () => {
   const navigate = useNavigate();
@@ -131,73 +127,13 @@ const StudentForm = () => {
     }
   };
 
-  // Function to handle PDF download
-  // const handleDownloadPDF = () => {
-  //   const input = formRef.current; // Reference to the form element
-  //   console.log("Form HTML:", input.innerHTML);
-  //   html2canvas(input, {
-  //     scale: 2, // Increase scale for better quality
-  //     useCORS: true, // Handle cross-origin images if any
-  //   })
-  //     .then((canvas) => {
-  //       const imgData = canvas.toDataURL("image/png");
-  //       const pdf = new jsPDF("p", "mm", "a4"); // A4 size PDF
-  //       const imgWidth = 210; // A4 width in mm
-  //       const imgHeight = (canvas.height * imgWidth) / canvas.width;
-
-  //       pdf.addImage(imgData, "PNG", 0, 0, imgWidth, imgHeight);
-  //       pdf.save("student_form.pdf"); // Download the PDF
-  //     })
-  //     .catch((error) => {
-  //       console.error("Error generating PDF:", error);
-  //       handleError(
-  //         "Failed to generate PDF. Please check the console for details."
-  //       );
-  //     });
-  // };
-
-  const handleDownloadImage = () => {
-    const formElement = document.querySelector("#studentForm");
-    if (!formElement) {
-      console.error("Form element not found!");
-      handleError("Form element not found. Please check the ID.");
-      return;
-    }
-
-    // Use html2canvas to capture the form as an image
-    html2canvas(formElement, {
-      scale: 2, // Increase scale for better quality
-      useCORS: true, // Handle cross-origin images if any
-      logging: true, // Enable logging for debugging
-      allowTaint: true, // Allow tainted canvas
-    })
-      .then((canvas) => {
-        // Convert the canvas to an image URL
-        const imageURL = canvas.toDataURL("image/png");
-
-        // Create a temporary link to download the image
-        const link = document.createElement("a");
-        link.href = imageURL;
-        link.download = "student_form.png"; // File name
-        document.body.appendChild(link);
-        link.click(); // Trigger the download
-        document.body.removeChild(link); // Clean up
-      })
-      .catch((error) => {
-        console.error("Error generating image:", error);
-        handleError(
-          "Failed to generate image. Please check the console for details."
-        );
-      });
-  };
-
   return (
     <div>
       <form
         onSubmit={handleSubmit}
         ref={formRef}
         id="studentForm"
-        className="relative w-[100%]  z-10 h-auto bg-[#F6F6F6] rounded-[25px] flex flex-col pt-[60px] pb-[70px] pr-[20px] pl-[20px] m-auto shadow-[0_0_20px_10px_rgba(0,0,0,0.25)]"
+        className="relative w-[100%] md:w-[669px] z-10 h-auto bg-[#F6F6F6] rounded-[25px] flex flex-col pt-[60px] pb-[70px] pr-[20px] pl-[20px] m-auto shadow-[0_0_20px_10px_rgba(0,0,0,0.25)]"
       >
         <h1 className="cinzel text-[20px] font-bold">Student Details</h1>
         <div className="flex flex-col">
@@ -474,12 +410,6 @@ const StudentForm = () => {
         <br />
         <Button value={"Update"} />
       </form>
-      <div
-        className="flex items-center justify-center m-10"
-        onClick={handleDownloadImage}
-      >
-        <OutlineBtn value="Download" />
-      </div>
     </div>
   );
 };

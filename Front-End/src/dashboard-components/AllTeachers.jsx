@@ -3,6 +3,7 @@ import { useCoursesContext } from "../context/courseContext";
 import { IconButton } from "@material-tailwind/react";
 import Button from "../components/Button";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 const AllTeachers = () => {
   const { isLoading, allTeachersData } = useCoursesContext();
@@ -53,9 +54,13 @@ const AllTeachers = () => {
                   Years of Experience: {teacher.experience}
                 </p>
 
-                <div className="mt-[10px] m-auto">
-                  <Button value="About Teacher" />
-                </div>
+                <Link
+                  to={`/dashboard/all-teachers/teacher-form/${teacher._id}`}
+                >
+                  <div className="mt-[10px] m-auto">
+                    <Button value="About Teacher" />
+                  </div>
+                </Link>
               </div>
             ))}
       </div>

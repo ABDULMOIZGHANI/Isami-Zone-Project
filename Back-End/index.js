@@ -20,6 +20,43 @@ app.use("/auth", authRoutes);
 
 connectDB()
   .then(() => {
+    app.put("/teacher/update/:id", async (req, res) => {
+      const { id } = req.params;
+      const updatedData = req.body;
+
+      try {
+        const updatedTeacher = await Teacher.findByIdAndUpdate(
+          id,
+          updatedData,
+          {
+            new: true,
+            runValidators: true,
+          }
+        );
+
+        if (!updatedTeacher) {
+          return res.status(404).json({
+            success: false,
+            message: "Teacher not found",
+          });
+        }
+
+        res.status(200).json({
+          success: true,
+          message: "Teacher updated successfully",
+          data: updatedTeacher,
+        });
+      } catch (error) {
+        console.error("Error updating teacher:", error);
+        res.status(500).json({
+          success: false,
+          message: "Failed to update Teachert",
+          error: error.message,
+        });
+      }
+    });
+
+    // student form updation route
     app.put("/students/update/:id", async (req, res) => {
       const { id } = req.params; // Get the student ID from the URL
       const updatedData = req.body; // Get the updated data from the request body
