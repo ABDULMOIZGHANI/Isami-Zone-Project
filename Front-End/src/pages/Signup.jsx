@@ -3,6 +3,7 @@ import styled from "styled-components";
 import Button from "../components/Button";
 import { handleError, handleSuccess } from "../components/utils";
 import { useNavigate } from "react-router-dom";
+import TermsConditions from "../components/TermsConditions";
 
 const Registration = () => {
   const navigate = useNavigate();
@@ -100,8 +101,9 @@ const Registration = () => {
 
         <form
           onSubmit={handleSubmit}
-          className="relative w-[100%] md:w-[669px] z-10 h-auto bg-[#F6F6F6] rounded-[25px] flex flex-col pt-[60px] pb-[70px] pr-[20px] pl-[20px] m-auto shadow-[0_0_20px_10px_rgba(0,0,0,0.25)]"
+          className="relative w-[100%] md:w-[669px] z-10 h-auto bg-[#F6F6F6] rounded-[25px] flex flex-col pt-[40px] pb-[40px] pr-[20px] pl-[20px] m-auto shadow-[0_0_20px_10px_rgba(0,0,0,0.25)]"
         >
+          <TermsConditions />
           <h1 className="cinzel text-[20px] font-bold">Teacher Details</h1>
           <div className="flex flex-col">
             <input

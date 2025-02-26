@@ -14,10 +14,13 @@ const Footer = () => {
         <div className="w-[85%] flex justify-between m-auto pt-16 text-white md:flex-row flex-col">
           <div className="About">
             <h2 className="cinzel text-[26px] font-bold mb-6">About Us</h2>
-            {AboutUs.map((val) => (
-              <div className="flex gap-[14px] items-center mb-[23px]">
+            {AboutUs.map((val, index) => (
+              <div
+                key={index}
+                className="flex gap-[14px] items-center mb-[23px]"
+              >
                 <i className="fa-solid fa-chevron-right text-[12px]"></i>
-                <p className="poppins text-[18px] text-[#f9f9f9]">
+                <p className="poppins text-[16px] text-[#f9f9f9]">
                   {val.value}
                 </p>
               </div>
@@ -28,10 +31,13 @@ const Footer = () => {
             <h2 className="cinzel text-[26px] font-bold mb-6">
               Courses For You
             </h2>
-            {Courses.map((val) => (
-              <div className="flex gap-[14px] items-center mb-[23px]">
+            {Courses.map((val, index) => (
+              <div
+                key={index}
+                className="flex gap-[14px] items-center mb-[23px]"
+              >
                 <i className="fa-solid fa-chevron-right text-[12px]"></i>
-                <p className="poppins text-[18px] text-[#f9f9f9]">
+                <p className="poppins text-[16px] text-[#f9f9f9]">
                   {val.value}
                 </p>
               </div>
@@ -42,10 +48,10 @@ const Footer = () => {
             <h2 className="cinzel text-[26px] font-bold mb-6">
               Courses Category
             </h2>
-            {CoursesCategory.map((val) => (
-              <div className="flex gap-[14px] items-center mb-[23px]">
+            {CoursesCategory.map((val, i) => (
+              <div key={i} className="flex gap-[14px] items-center mb-[23px]">
                 <i className="fa-solid fa-chevron-right text-[12px]"></i>
-                <p className="poppins text-[18px] text-[#f9f9f9]">
+                <p className="poppins text-[16px] text-[#f9f9f9]">
                   {val.value}
                 </p>
               </div>
@@ -56,10 +62,10 @@ const Footer = () => {
             <h2 className="cinzel text-[26px] font-bold mb-6">
               Courses Category
             </h2>
-            {Contacts.map((val) => (
-              <div className="flex gap-[14px] items-center mb-[23px]">
+            {Contacts.map((val, i) => (
+              <div key={i} className="flex gap-[14px] items-center mb-[23px]">
                 <i className="fa-solid fa-chevron-right text-[12px]"></i>
-                <p className="poppins text-[18px] text-[#f9f9f9]">
+                <p className="poppins text-[16px] text-[#f9f9f9]">
                   {val.value}
                 </p>
               </div>

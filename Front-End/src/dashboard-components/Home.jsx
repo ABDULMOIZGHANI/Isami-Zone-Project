@@ -23,6 +23,7 @@ const Home = () => {
 
   if (isLoading) return <h1>Loading...</h1>; // Prevent rendering if still loading
   // if (!currentStudent) return <h1>No student found</h1>; // Prevent crash if student doesn't exist
+  console.log("All Students Data:", allStudentsData);
 
   return (
     <>
@@ -70,7 +71,31 @@ const Home = () => {
 
       {/* Student Schedule */}
       {!currentStudent ? (
-        <h1 className="mt-4 cinzel">No student found</h1>
+        <div className="w-[100%]  mx-auto mt-12">
+          <h2 className="text-xl cinzel font-semibold text-gray-800 mb-4">
+            All Students Schedule
+          </h2>
+          <table className="w-full border border-gray-300 rounded-lg overflow-hidden">
+            <thead className="bg-gray-200">
+              <tr>
+                <th className="p-3 text-left">Name</th>
+                <th className="p-3 text-left">Day</th>
+                <th className="p-3 text-left">Timing</th>
+                <th className="p-3 text-left">Teacher</th>
+              </tr>
+            </thead>
+            <tbody>
+              {allStudentsData.map((student, index) => (
+                <tr key={index} className="border-t border-gray-300">
+                  <td className="p-3">{student.name}</td>
+                  <td className="p-3">{student.days.join(", ")}</td>
+                  <td className="p-3">{student.timing[0] || "N/A"}</td>
+                  <td className="p-3">{student.teacher[0] || "N/A"}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       ) : (
         <div className="max-w-lg mx-auto mt-8">
           <h2 className="text-xl font-semibold text-gray-800 mb-4">
