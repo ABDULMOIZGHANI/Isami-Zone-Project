@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { useCoursesContext } from "../context/courseContext";
-import AllTeachers from "./AllTeachers";
 
 const Home = () => {
   const [userName, setUserName] = useState("");
@@ -128,7 +127,7 @@ const Home = () => {
           </table>
         </div>
       ) : (
-        <div className="max-w-lg mx-auto mt-8">
+        <div className="w-[100%] mx-auto mt-8">
           <h2 className="text-xl font-semibold text-gray-800 mb-4">
             Student Schedule
           </h2>

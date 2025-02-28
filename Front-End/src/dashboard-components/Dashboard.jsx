@@ -11,6 +11,8 @@ import FreeTrial from "./FreeTrial";
 import AllTeachers from "./AllTeachers";
 import StudentForm from "./StudentForm";
 import TeacherForm from "./TeacherForm";
+import Assignment from "./Assignment";
+import StudentAssignment from "./StudentAssignmnet";
 
 const Dashboard = () => {
   const { page, value, id } = useParams();
@@ -32,6 +34,8 @@ const Dashboard = () => {
         {page2 === "all-teachers/teacher-form" && <TeacherForm />}
         {`${page}/${value}` === "all-teachers/undefined" && <AllTeachers />}
         {page === "free-trial" && <FreeTrial />}
+        {page2 === "assignment/undefined" && <Assignment />}
+        {page2 === "assignment/add-assignment" && <StudentAssignment />}
       </div>
     </main>
   );

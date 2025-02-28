@@ -17,6 +17,7 @@ import {
   UserCircleIcon,
   Bars3Icon,
   XMarkIcon,
+  BookOpenIcon,
 } from "@heroicons/react/24/solid";
 import { ChevronRightIcon, ChevronDownIcon } from "@heroicons/react/24/outline";
 import { Link } from "react-router-dom";
@@ -76,6 +77,26 @@ const DashboardSideBar = () => {
                 </ListItem>
               </Accordion>
             </Link>
+
+            {/* ASSIGNMENT LINK BUTTON */}
+            <Link to="/dashboard/assignment">
+              <Accordion open={open === 1}>
+                <ListItem className="p-0" selected={open === 1}>
+                  <AccordionHeader className="border-b-0 p-3">
+                    <ListItemPrefix>
+                      <BookOpenIcon className="h-5 w-5" />
+                    </ListItemPrefix>
+                    <Typography
+                      color="blue-gray"
+                      className="mr-auto font-normal"
+                    >
+                      Lesson
+                    </Typography>
+                  </AccordionHeader>
+                </ListItem>
+              </Accordion>
+            </Link>
+
             {userID === "67bea3852df014b331adcdfd" && (
               <>
                 <Accordion
