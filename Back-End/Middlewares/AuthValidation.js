@@ -6,10 +6,8 @@ const studentValidationSchema = Joi.object({
   gender: Joi.string().valid("male", "female").required(),
   age: Joi.number().integer().min(4).max(100).required(),
   country: Joi.string().required(),
+  chooseCourse: Joi.string().required(),
   phoneNumber: Joi.string()
-    .pattern(/^[0-9]{10,15}$/)
-    .required(),
-  whatsappNumber: Joi.string()
     .pattern(/^[0-9]{10,15}$/)
     .required(),
   whatsappNumber: Joi.string()

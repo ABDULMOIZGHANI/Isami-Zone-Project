@@ -48,6 +48,7 @@ const Login = () => {
         localStorage.setItem("token", token);
         localStorage.setItem("user_id", user.id);
         localStorage.setItem("name", user.name);
+        localStorage.setItem("CNIC", user.CNIC);
         setTimeout(() => {
           navigate("/dashboard/home");
           // Window.Reload()

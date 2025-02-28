@@ -39,6 +39,10 @@ const studentSignupSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
+    chooseCourse: {
+      type: String,
+      required: true,
+    },
     relation: {
       type: String,
       required: true,

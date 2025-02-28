@@ -15,6 +15,7 @@ const Registration = () => {
     country: "",
     phoneNumber: "",
     whatsappNumber: "",
+    chooseCourse: "",
     password: "",
     confirmPassword: "",
     guardianName: "",
@@ -191,6 +192,19 @@ const Registration = () => {
                 autoComplete="new-password"
                 required
                 className="w-[50%] border border-[#B7B7B7] rounded-[7px] pr-[15px] pl-[18px] pt-[10px] pb-[10px] poppins"
+                onChange={handleChange}
+              />
+            </div>
+            <br />
+
+            <div className="w-[100%] flex gap-[20px]">
+              <input
+                type="text"
+                placeholder="Enter Your Course Name *"
+                name="chooseCourse"
+                autoComplete="new-password"
+                required
+                className="w-[100%] border border-[#B7B7B7] rounded-[7px] pr-[15px] pl-[18px] pt-[10px] pb-[10px] poppins"
                 onChange={handleChange}
               />
             </div>

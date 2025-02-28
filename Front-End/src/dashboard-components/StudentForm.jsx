@@ -44,6 +44,7 @@ const StudentForm = () => {
         country: existingStudent.country || "",
         phoneNumber: existingStudent.phoneNumber || "",
         whatsappNumber: existingStudent.whatsappNumber || "",
+        chooseCourse: existingStudent.chooseCourse || "",
         days: existingStudent.days || [],
         timing: existingStudent.timing || [],
         teacher: existingStudent.teacher || [],
@@ -258,6 +259,19 @@ const StudentForm = () => {
           <br />
 
           <div className="w-[100%] flex gap-[20px]">
+            <input
+              type="text"
+              placeholder="Enter Your Course Name *"
+              name="chooseCourse"
+              value={formData.chooseCourse}
+              required
+              className="w-[100%] border border-[#B7B7B7] rounded-[7px] pr-[15px] pl-[18px] pt-[10px] pb-[10px] poppins"
+              onChange={handleChange}
+            />
+          </div>
+          <br />
+
+          <div className="w-[100%] flex gap-[20px]">
             <div className="w-[50%]">
               <label className="font-bold" htmlFor="phoneNumber">
                 Your Timings
@@ -276,11 +290,11 @@ const StudentForm = () => {
               <br />
               <div>
                 <label className="font-bold" htmlFor="phoneNumber">
-                  Teacher Name
+                  Teacher's CNIC
                 </label>
                 <input
                   type="text"
-                  placeholder="Enter Teacher Name *"
+                  placeholder="Enter Teacher's CNIC *"
                   name="teacher"
                   value={formData.teacher}
                   required

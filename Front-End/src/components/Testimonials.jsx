@@ -6,11 +6,15 @@ import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 import { Pagination, Navigation } from "swiper/modules";
+import { useCoursesContext } from "../context/courseContext.jsx";
 
 const Testimonials = () => {
+  const { isLoading, allTestimonialData } = useCoursesContext();
+  console.log("TESTI", allTestimonialData);
+
   return (
     <Section>
-      <h1 className="text-center cinzel text-4xl font-bold pt-[120px] pb-[50px]">
+      <h1 className="text-center cinzel text-4xl font-bold pt-[120px] pb-[20px]">
         What Students Say
       </h1>
 
@@ -39,22 +43,25 @@ const Testimonials = () => {
             },
           }}
         >
-          {Reviews.map((testimonial, index) => (
+          {allTestimonialData.map((testimonial, index) => (
             <SwiperSlide key={index}>
               <TestimonialCard>
-                <img
-                  src={testimonial.img}
-                  alt=""
-                  className="block m-auto w-[60px] h-[60px] rounded-full"
-                />
+                <div className="flex justify-center items-center">
+                  <img
+                    src="/KeyFeaturesSection/Testimonial.png"
+                    alt="User Icon"
+                    className="w-[60px] h-[60px] rounded-full"
+                  />
+                </div>
+
                 <h2 className="text-[22px] cinzel font-bold text-[#171717] p-3">
-                  {testimonial.Name}
+                  {testimonial.userName}
                 </h2>
                 <h3 className="text-[15px] poppins font-semibold text-[#171717] pb-4">
-                  {testimonial.Country}
+                  {testimonial.country}
                 </h3>
                 <p className="text-[14px] poppins font-light text-[#171717]">
-                  {testimonial.review}
+                  {testimonial.message}
                 </p>
               </TestimonialCard>
             </SwiperSlide>

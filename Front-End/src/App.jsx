@@ -13,7 +13,7 @@ function App() {
       <Outlet />
       <Footer />
       <Link to="https://wa.me/+923048725311">
-        <WhatsApp src="sectionImages/whatsapp.png" alt="" />
+        <WhatsApp src="/sectionImages/whatsapp.png" alt="WhatsApp Icon" />
       </Link>
     </>
   );
@@ -23,9 +23,9 @@ export default App;
 
 const WhatsApp = styled.img`
   position: fixed;
-  bottom: 30px;
-  left: 30px;
-  width: 70px;
+  bottom: 90px;
+  right: 25px;
+  width: 65px;
   z-index: 9999;
   cursor: pointer;
 `;

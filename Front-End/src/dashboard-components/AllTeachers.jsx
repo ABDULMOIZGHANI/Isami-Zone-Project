@@ -53,6 +53,9 @@ const AllTeachers = () => {
                 <p class="poppins text-[#555] text-sm mt-2">
                   Years of Experience: {teacher.experience}
                 </p>
+                <p class="poppins text-[#555] text-sm mt-2">
+                  CNIC Number: {teacher.CNIC}
+                </p>
 
                 <Link
                   to={`/dashboard/all-teachers/teacher-form/${teacher._id}`}
