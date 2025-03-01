@@ -42,29 +42,31 @@ const Testimonials = () => {
             },
           }}
         >
-          {allTestimonialData.map((testimonial, index) => (
-            <SwiperSlide key={index}>
-              <TestimonialCard>
-                <div className="flex justify-center items-center">
-                  <img
-                    src="/KeyFeaturesSection/Testimonial.png"
-                    alt="User Icon"
-                    className="w-[60px] h-[60px] rounded-full"
-                  />
-                </div>
+          {allTestimonialData
+            .filter((testimonial) => testimonial.approve === true)
+            .map((testimonial, index) => (
+              <SwiperSlide key={index}>
+                <TestimonialCard>
+                  <div className="flex justify-center items-center">
+                    <img
+                      src="/KeyFeaturesSection/Testimonial.png"
+                      alt="User Icon"
+                      className="w-[60px] h-[60px] rounded-full"
+                    />
+                  </div>
 
-                <h2 className="text-[22px] cinzel font-bold text-[#171717] p-3">
-                  {testimonial.userName}
-                </h2>
-                <h3 className="text-[15px] poppins font-semibold text-[#171717] pb-4">
-                  {testimonial.country}
-                </h3>
-                <p className="text-[14px] poppins font-light text-[#171717]">
-                  {testimonial.message}
-                </p>
-              </TestimonialCard>
-            </SwiperSlide>
-          ))}
+                  <h2 className="text-[22px] cinzel font-bold text-[#171717] p-3">
+                    {testimonial.userName}
+                  </h2>
+                  <h3 className="text-[15px] poppins font-semibold text-[#171717] pb-4">
+                    {testimonial.country}
+                  </h3>
+                  <p className="text-[14px] poppins font-light text-[#171717]">
+                    {testimonial.message}
+                  </p>
+                </TestimonialCard>
+              </SwiperSlide>
+            ))}
         </Swiper>
       </div>
     </Section>

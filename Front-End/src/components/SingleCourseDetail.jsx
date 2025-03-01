@@ -1,6 +1,6 @@
 import React from "react";
 import { useCoursesContext } from "../context/courseContext";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import styled from "styled-components";
 import Button from "./Button";
 import MainSection from "./MainSection";
@@ -53,7 +53,9 @@ const SingleCourseDetail = () => {
               learning or helping your child begin theirs, this course is your
               gateway to a lifetime of spiritual growth and rewards.
             </p>
-            <Button value="Get Free Trial Class" />
+            <Link to="/">
+              <Button value="Get Free Trial Class" />
+            </Link>
           </div>
         </div>
       )}

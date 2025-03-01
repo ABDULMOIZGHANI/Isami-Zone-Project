@@ -13,7 +13,9 @@ const OurMission = () => {
           beginner or looking to deepen your understanding of the Quran.
         </p>
       </div>
-      <img src="/AboutUs/Mockup-IslamiZone.png" alt="Mockup-IslamiZone" />
+      <div className="w-[420px] md:mt-[0px] mt-[30px]">
+        <img src="/AboutUs/Mockup-IslamiZone.png" alt="Mockup-IslamiZone" />
+      </div>
     </section>
   );
 };

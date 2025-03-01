@@ -33,9 +33,11 @@ const Menu = () => {
                 <FaAngleDown className="ml-2 text-xs mt-[5px]" />
               </Link>
               <SubDropdown className="group-hover:block">
-                <DropdownItem>Course 1</DropdownItem>
-                <DropdownItem>Course 2</DropdownItem>
-                <DropdownItem>Course 3</DropdownItem>
+                <Link to="/course-detail/Qaida%20For%20Beginners">
+                  <DropdownItem>Qaida For Beginners</DropdownItem>
+                </Link>
+                <DropdownItem>Quran Memorization</DropdownItem>
+                <DropdownItem>Tafseer e Quran</DropdownItem>
               </SubDropdown>
             </DropdownItem>
           </Dropdown>
