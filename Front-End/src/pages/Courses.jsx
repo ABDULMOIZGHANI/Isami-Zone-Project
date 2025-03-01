@@ -23,7 +23,7 @@ const Courses = () => {
     <div className="relative">
       <LeftStars src="/courses/Lstars.png" alt="" />
       <RightStars src="/courses/Stars.png" alt="" />
-      <section className="w-[85%] m-auto">
+      <section className="w-[90%] md:w-[85%] m-auto max-w-[1450px]">
         <h1 className="text-center cinzel text-4xl font-bold pt-[60px] pb-[50px]">
           Our Courses
         </h1>

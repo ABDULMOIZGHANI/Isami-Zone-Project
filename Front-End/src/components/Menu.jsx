@@ -6,7 +6,7 @@ import styled from "styled-components";
 const Menu = () => {
   return (
     <menu className="md:bg-[#246545]">
-      <ul className="md:flex-row flex flex-col items-center justify-between md:w-[85%] w-[100%] m-auto h-[500px] md:h-[60px]">
+      <ul className="md:flex-row flex flex-col items-center justify-between md:w-[85%] w-[100%] max-w-[1450px] m-auto h-[500px] md:h-[60px]">
         <Link to="/home">
           <MenuList>HOME</MenuList>
         </Link>

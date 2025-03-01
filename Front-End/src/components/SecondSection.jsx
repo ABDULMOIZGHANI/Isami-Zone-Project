@@ -15,7 +15,7 @@ const SecondSection = () => {
         What is Isami Zone Project?
       </h1>
 
-      <div className="flex md:w-[68%] w-[90%] m-auto gap-[30px] items-center justify-between mb-[60px] flex-col md:flex-row">
+      <div className="flex md:w-[68%] w-[90%] max-w-[1450px] m-auto gap-[30px] items-center justify-between mb-[60px] flex-col md:flex-row">
         <p className="poppins text-[19px] text-[#171717] md:text-left text-center">
           <b>Islami Zone</b> is an online institute that connects teachers and
           students passionate about learning the Quran, Tajweed, or the Arabic
@@ -28,7 +28,7 @@ const SecondSection = () => {
       </div>
 
       <iframe
-        className="m-auto mb-[20px] md:h-[600px] md:w-[85%] w-[90%] h-[300px]"
+        className="m-auto mb-[20px] md:h-[600px] md:w-[85%] w-[90%] max-w-[1450px] h-[300px]"
         src="https://www.youtube.com/embed/6dqAwh2MCg0"
         title="YouTube video player"
         frameBorder="0"

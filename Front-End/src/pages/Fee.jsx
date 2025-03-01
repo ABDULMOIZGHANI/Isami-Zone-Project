@@ -4,7 +4,7 @@ import OutlineBtn from "../components/OutlineBtn";
 
 const Fee = () => {
   return (
-    <div className="flex items-center justify-between md:flex-row flex-col w-[85%] m-auto gap-[5px]">
+    <div className="flex items-center justify-between md:flex-row flex-col w-[85%] m-auto gap-[5px] max-w-[1450px]">
       <div className="w-[90%] md:w-[30%] h-[447px] bg-[#e7e7e7] rounded-xl shadow-xl p-5 text-center text-white mt-[40px] mb-[40px]">
         {/* Top Header */}
         <div className="text-2xl font-bold cinzel text-[#171717]">

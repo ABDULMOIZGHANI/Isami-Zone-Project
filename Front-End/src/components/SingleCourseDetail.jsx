@@ -19,14 +19,16 @@ const SingleCourseDetail = () => {
       {!course ? (
         "LOADING"
       ) : (
-        <div className="p-4 md:w-[85%] m-auto">
+        <div className="p-4 md:w-[85%] max-w-[1450px] m-auto">
           <h1 className="text-center cinzel text-4xl font-bold pt-[60px] pb-[50px]">
             {course.title}
           </h1>
           <p className="text-[18px] text-[#171717] poppins text-center mb-[80px]">
             {course.detail}
           </p>
-          <img src={course.img} alt={course.title} className="block center" />
+          <div className="flex justify-center">
+            <img src={course.img} alt={course.title} className="block center" />
+          </div>
           <h2 className="text-center cinzel text-4xl font-bold pb-[50px]">
             {course.whatYouLearn_Title}
           </h2>

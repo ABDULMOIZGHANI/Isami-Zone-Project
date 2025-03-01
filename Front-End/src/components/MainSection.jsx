@@ -26,7 +26,7 @@ const MainSection = () => {
 
   return (
     <Section>
-      <div className="w-[95%] md:w-[85%] xlg:w-[100px] m-auto h-[100%] flex items-center">
+      <div className="w-[95%] md:w-[85%] xlg:w-[100px] max-w-[1450px] m-auto h-[100%] flex items-center">
         <form
           action=""
           className="w-[100%] md:w-[419px] h-[500px] sm:h-[550px] md:h-[550px] lg:h-[480px] bg-[#fff] rounded-[25px] flex flex-col justify-between pt-[60px] pb-[70px] pr-[20px] pl-[20px]"

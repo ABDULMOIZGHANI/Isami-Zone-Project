@@ -30,7 +30,7 @@ const FAQS = () => {
           FAQs
         </h1>
 
-        <div className="flex gap-[15px] flex-wrap items-stretch justify-around mb-[50px]">
+        <div className="flex gap-[15px] flex-wrap items-stretch justify-around mb-[50px] max-w-[1450px] m-auto">
           {FAQs.map((faq, i) => (
             <div
               key={i}

@@ -44,7 +44,7 @@ const Home = () => {
   return (
     <>
       <h1 className="text-[20px] cinzel font-bold">Welcome {userName}</h1>
-      <div className="flex justify-between pt-[20px] gap-6 flex-col sm:flex-row">
+      <div className="flex justify-around pt-[20px] gap-6 flex-col sm:flex-row ">
         <div className="max:w-[30%]  bg-[#D8D8D8] shadow flex flex-col gap-3 p-[20px] rounded-t-[20px] rounded-br-[20px]">
           <div className="flex justify-between">
             <h2 className="cinzel font-bold text-[20px] text-[#171717]">

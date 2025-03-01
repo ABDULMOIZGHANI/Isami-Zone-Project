@@ -8,7 +8,7 @@ const SimpleSteps = () => {
         BEGIN YOUR LEARNING JOURNEY IN 3 SIMPLE STEPS
       </h1>
 
-      <div className="w-[90%] md:w-[85%] m-auto flex md:flex-row flex-col">
+      <div className="w-[90%] md:w-[85%] max-w-[1450px] m-auto flex md:flex-row flex-col">
         {steps.map((step, i) => (
           <div
             key={i}

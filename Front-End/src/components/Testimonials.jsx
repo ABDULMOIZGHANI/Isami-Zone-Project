@@ -19,7 +19,7 @@ const Testimonials = () => {
 
       <QuranImg src="/KeyFeaturesSection/QURANPAK2.png" alt="" />
 
-      <div className="w-[100%] m-auto bg-[#ffffff] h-[60vh] md:h-[80vh] flex items-center">
+      <div className="w-[100%] max-w-[1450px] m-auto bg-[#ffffff] h-[60vh] md:h-[80vh] flex items-center">
         <Swiper
           slidesPerView={1}
           spaceBetween={15}

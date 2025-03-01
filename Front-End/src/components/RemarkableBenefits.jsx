@@ -40,8 +40,8 @@ const RemarkableBenefits = () => {
         The Remarkable Benefits of Learning the Quran Online With Us
       </h1>
 
-      <div className="flex w-[85%] m-auto justify-between gap-[10px] md:flex-row flex-col md:text-left text-center">
-        <p className="poppins text-[17px]">
+      <div className="flex w-[85%] m-auto justify-between gap-[10px] md:flex-row flex-col md:text-left text-center max-w-[1450px]">
+        <p className="poppins text-[17px] ">
           One of the greatest advantages of learning the Quran online through
           Islami Zone is the unparalleled access to exceptional teachers from
           countries such as the USA, Pakistan, Egypt, Jordan, and Saudi Arabia.
@@ -69,17 +69,10 @@ const RemarkableBenefits = () => {
 
       <div>
         <div className="services-section">
-          {/* <div className="services">
-            <h2>What we do</h2>
-            <p className="services-para">
-              We turn your idea into reality, on time and within budget.
-            </p> */}
-
-          <div className="service-list">
+          <div className="service-list max-w-[1450px]">
             <div className="service-main">
               {service_data.map((item) => (
                 <div key={item.id}>
-                  {/* Render the Service Heading */}
                   <BenefitsHeadings
                     img={item.number_img}
                     heading={item.heding}
@@ -91,7 +84,7 @@ const RemarkableBenefits = () => {
 
                   {/* For mobile view, render the detail directly below the heading */}
                   {isMobile && selectedServiceId === item.id && (
-                    <div>
+                    <div className="flex justify-center">
                       {/* <h1>{item.heding}</h1> */}
                       {/* <p>{item.detail_about_project}</p> */}
                       <img src={item.poject_img} alt={item.heding} />

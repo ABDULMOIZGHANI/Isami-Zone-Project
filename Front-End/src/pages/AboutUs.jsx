@@ -8,7 +8,7 @@ const AboutUs = () => {
   return (
     <>
       <div>
-        <main className="w-[90%] md:w-[85%] m-auto">
+        <main className="w-[90%] md:w-[85%] m-auto max-w-[1450px]">
           <h1 className="text-center cinzel text-4xl font-bold pt-[60px] pb-[50px]">
             About Islami Zone
           </h1>

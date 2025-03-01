@@ -86,7 +86,7 @@ const Header = () => {
         </div>
       </div>
 
-      <header className="flex items-center justify-between w-[90%] md:w-[85%] m-auto py-4">
+      <header className="flex items-center justify-between w-[90%] md:w-[85%] max-w-[1450px] m-auto py-4">
         {/* Logo */}
         <div className="logo">
           <Link to="/">

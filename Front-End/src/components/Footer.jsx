@@ -18,7 +18,7 @@ const Footer = () => {
   return (
     <footer>
       <div className="md:h-[400px] h-auto bg-[#246545] w-[100%]">
-        <div className="w-[85%] flex justify-between m-auto pt-16 text-white md:flex-row flex-col">
+        <div className="w-[90%] md:w-[85%] flex justify-between m-auto pt-16 text-white md:flex-row flex-col max-w-[1450px]">
           <div className="About">
             <h2 className="cinzel text-[26px] font-bold mb-6">About Us</h2>
             {AboutUs.map((val, index) => (
@@ -88,7 +88,7 @@ const Footer = () => {
       </div>
 
       <div className="bg-[#1e1e1e] ">
-        <div className="w-[90%] md:w-[85%] m-auto h-[104px] flex justify-between items-center">
+        <div className="w-[90%] md:w-[85%] m-auto h-[104px] flex justify-between items-center max-w-[1450px]">
           <Link to="/home">
             <h2 className="cinzel text-[26px] font-bold text-[#fff]">
               Islami Zone

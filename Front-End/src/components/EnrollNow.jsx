@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 const EnrollNow = () => {
   return (
-    <section className="w-[90%] md:w-[85%] flex justify-between md:flex-row flex-col items-center m-auto mt-[60px] mb-[30px]">
+    <section className="w-[90%] md:w-[85%] max-w-[1450px] flex justify-between md:flex-row flex-col items-center m-auto mt-[60px] mb-[30px]">
       <div className="w-[85%] md:w-[50%] flex flex-col gap-10 mb-[30px] md:mb-[0px] ">
         <h2 className="text-[38px] font-bold cinzel">Enroll Now</h2>
         <p className="poppins text-[17px] text-[#171717]">

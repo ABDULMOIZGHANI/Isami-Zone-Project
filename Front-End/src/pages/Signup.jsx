@@ -88,7 +88,7 @@ const Registration = () => {
       <LeftStars src="/courses/Lstars.png" alt="" />
       <RightStars src="/courses/Stars.png" alt="" />
 
-      <div className="w-[90%]  md:w-[85%] m-auto">
+      <div className="w-[90%]  md:w-[85%] m-auto max-w-[1450px]">
         <h1 className="text-center cinzel text-4xl font-bold pt-[90px] md:pt-[80px] pb-[30px]">
           Register Now to Get Started
         </h1>
