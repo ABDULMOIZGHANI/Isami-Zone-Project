@@ -72,7 +72,7 @@ const AppProvider = ({ children }) => {
       dispatch({ type: "SET_LOADING" });
       const response = await axios.get(allTeachers);
       const allTeachersData = response.data;
-      console.log("from contextt", allTeachersData);
+      // console.log("from contextt", allTeachersData);
       dispatch({ type: "ALL_TEACHERS", payload: allTeachersData });
     } catch (error) {
       console.log("Error in fetching the all teachers", error);

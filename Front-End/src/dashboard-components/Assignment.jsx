@@ -34,17 +34,17 @@ const Assignment = () => {
 
   if (isLoading) return <h1>Loading...</h1>;
   return (
-    <div>
+    <div className="overflow-x-auto">
       {!currentStudent ? (
         <div className="w-[100%]  mx-auto mt-12">
           <h2 className="text-xl cinzel font-semibold text-gray-800 mb-4">
             Assignment
           </h2>
-          <table className="w-full border border-gray-300 rounded-lg overflow-hidden">
+          <table className="w-[100%] border border-gray-300 rounded-lg overflow-x-auto">
             <tbody>
               {userID === "67bea3852df014b331adcdfd" ? (
                 // Table for Admin (userID matches)
-                <table className="w-full">
+                <table className="w-[100%] overflow-x-auto">
                   <thead>
                     <tr className="bg-gray-200">
                       <th className="p-3">Name</th>
@@ -70,7 +70,7 @@ const Assignment = () => {
                 // Tables for Non-Admin (userID does not match)
                 <div>
                   {/* Table 1: Students Assigned to the Teacher */}
-                  <table className="w-full mb-8">
+                  <table className="w-full mb-8 overflow-x-auto">
                     <thead>
                       <tr className="bg-gray-200">
                         <th className="p-3">Name</th>
@@ -106,7 +106,7 @@ const Assignment = () => {
                   </table>
 
                   {/* Table 2: Assignments for Students Assigned to the Teacher */}
-                  <table className="w-full">
+                  <table className="w-full overflow-x-auto">
                     <thead>
                       <tr className="bg-gray-200">
                         <th className="p-3">Your Student's Lessons</th>
@@ -163,7 +163,7 @@ const Assignment = () => {
           <h2 className="text-xl font-semibold text-gray-800 mb-4">
             Student Assignment
           </h2>
-          <table className="w-[100%] border border-gray-300 rounded-lg overflow-hidden">
+          <table className="w-[100%] border border-gray-300 rounded-lg overflow-x-auto">
             <thead className="bg-gray-200">
               <tr>
                 <th className="p-3 text-left">Your Lesson Topic</th>

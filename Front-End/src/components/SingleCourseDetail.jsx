@@ -19,7 +19,7 @@ const SingleCourseDetail = () => {
       {!course ? (
         "LOADING"
       ) : (
-        <div className="p-4 w-[85%] m-auto">
+        <div className="p-4 md:w-[85%] m-auto">
           <h1 className="text-center cinzel text-4xl font-bold pt-[60px] pb-[50px]">
             {course.title}
           </h1>
@@ -67,10 +67,18 @@ const LeftStars = styled.img`
   position: absolute;
   left: 0px;
   top: 10px;
+  @media (max-width: 768px) {
+    /* display: none; */
+    width: 80px;
+  }
 `;
 
 const RightStars = styled.img`
   position: absolute;
   right: 0px;
   top: 10px;
+  @media (max-width: 768px) {
+    /* display: none; */
+    width: 80px;
+  }
 `;

@@ -9,7 +9,7 @@ import { useCoursesContext } from "../context/courseContext.jsx";
 
 const Testimonials = () => {
   const { isLoading, allTestimonialData } = useCoursesContext();
-  console.log("TESTI", allTestimonialData);
+  // console.log("TESTI", allTestimonialData);
 
   return (
     <Section>

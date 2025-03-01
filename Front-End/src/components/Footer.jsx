@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {
   AboutUs,
   Courses,
@@ -6,8 +6,15 @@ import {
   Contacts,
 } from "../data/AboutUs.js";
 import { FaInstagramSquare, FaFacebookSquare, FaYoutube } from "react-icons/fa";
+import { Link, useLocation } from "react-router-dom";
 
 const Footer = () => {
+  const location = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [location]);
+
   return (
     <footer>
       <div className="md:h-[400px] h-auto bg-[#246545] w-[100%]">
@@ -20,9 +27,11 @@ const Footer = () => {
                 className="flex gap-[14px] items-center mb-[23px]"
               >
                 <i className="fa-solid fa-chevron-right text-[12px]"></i>
-                <p className="poppins text-[16px] text-[#f9f9f9]">
-                  {val.value}
-                </p>
+                <Link to={val.link}>
+                  <p className="poppins text-[16px] text-[#f9f9f9]">
+                    {val.value}
+                  </p>
+                </Link>
               </div>
             ))}
           </div>
@@ -51,9 +60,11 @@ const Footer = () => {
             {CoursesCategory.map((val, i) => (
               <div key={i} className="flex gap-[14px] items-center mb-[23px]">
                 <i className="fa-solid fa-chevron-right text-[12px]"></i>
-                <p className="poppins text-[16px] text-[#f9f9f9]">
-                  {val.value}
-                </p>
+                <Link to={val.link}>
+                  <p className="poppins text-[16px] text-[#f9f9f9]">
+                    {val.value}
+                  </p>
+                </Link>
               </div>
             ))}
           </div>
@@ -65,9 +76,11 @@ const Footer = () => {
             {Contacts.map((val, i) => (
               <div key={i} className="flex gap-[14px] items-center mb-[23px]">
                 <i className="fa-solid fa-chevron-right text-[12px]"></i>
-                <p className="poppins text-[16px] text-[#f9f9f9]">
-                  {val.value}
-                </p>
+                <Link to={val.link}>
+                  <p className="poppins text-[16px] text-[#f9f9f9]">
+                    {val.value}
+                  </p>
+                </Link>
               </div>
             ))}
           </div>
@@ -76,14 +89,28 @@ const Footer = () => {
 
       <div className="bg-[#1e1e1e] ">
         <div className="w-[90%] md:w-[85%] m-auto h-[104px] flex justify-between items-center">
-          <h2 className="cinzel text-[26px] font-bold text-[#fff]">
-            Islami Zone
-          </h2>
+          <Link to="/home">
+            <h2 className="cinzel text-[26px] font-bold text-[#fff]">
+              Islami Zone
+            </h2>
+          </Link>
 
           <div className="flex gap-[10px]">
-            <FaInstagramSquare className="text-[40px] text-[#fff]" />
-            <FaFacebookSquare className="text-[40px] text-[#fff]" />
-            <FaYoutube className="text-[40px] text-[#fff]" />
+            <Link to="https://www.instagram.com/islami__zone/" target="_blank">
+              <FaInstagramSquare className="text-[40px] text-[#fff]" />
+            </Link>
+            <Link
+              to="https://www.facebook.com/islamizoneonlinequran"
+              target="_blank"
+            >
+              <FaFacebookSquare className="text-[40px] text-[#fff]" />
+            </Link>
+            <Link
+              to="https://www.youtube.com/@rizwanfareedofficial"
+              target="_blank"
+            >
+              <FaYoutube className="text-[40px] text-[#fff]" />
+            </Link>
           </div>
 
           <p className="poppins text-[16px] text-[#fff] hidden md:block">

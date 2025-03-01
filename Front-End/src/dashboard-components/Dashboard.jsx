@@ -18,7 +18,7 @@ const Dashboard = () => {
   const { page, value, id } = useParams();
   const page2 = `${page}/${value}`;
 
-  console.log(page, "/", value);
+  // console.log(page, "/", value);
 
   return (
     <main className="flex">

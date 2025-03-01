@@ -13,10 +13,10 @@ const Home = () => {
     setUserCNIC(localStorage.getItem("CNIC"));
   }, []);
 
-  console.log("User ID:", userID);
-  console.log("User Name:", userName);
-  console.log("User CNIC:", userCNIC);
-  console.log("All Teachers", allTeachersData);
+  // console.log("User ID:", userID);
+  // console.log("User Name:", userName);
+  // console.log("User CNIC:", userCNIC);
+  // console.log("All Teachers", allTeachersData);
 
   // Ensure that userID and allStudentsData are available before searching
   const currentStudent = allStudentsData?.find(
@@ -31,7 +31,7 @@ const Home = () => {
       .filter((teacher) => teacher.CNIC === Number(currentStudent.teacher))
       .map((name) => name.name);
   }
-  console.log(filteredTeacher);
+  // console.log(filteredTeacher);
 
   // console.log("Filtered Teacher:", filteredTeacher);
   // console.log("CURR STUDENT:", currentStudent);
@@ -44,42 +44,44 @@ const Home = () => {
   return (
     <>
       <h1 className="text-[20px] cinzel font-bold">Welcome {userName}</h1>
-      <div className="flex justify-between pt-[20px]">
-        <div class="w-[30%] bg-[#D8D8D8] shadow flex flex-col gap-3 p-[20px] rounded-t-[20px] rounded-br-[20px]">
+      <div className="flex justify-between pt-[20px] gap-6 flex-col sm:flex-row">
+        <div className="max:w-[30%]  bg-[#D8D8D8] shadow flex flex-col gap-3 p-[20px] rounded-t-[20px] rounded-br-[20px]">
           <div className="flex justify-between">
-            <h2 class="cinzel font-bold text-[20px] text-[#171717]">
+            <h2 className="cinzel font-bold text-[20px] text-[#171717]">
               All Teachers
             </h2>
-            <h2 class="cinzel font-bold text-[20px] text-[#171717]">10+</h2>
+            <h2 className="cinzel font-bold text-[20px] text-[#171717]">10+</h2>
           </div>
 
-          <p class="poppins text-[#555] text-sm mt-2">
+          <p className="poppins text-[#555] text-sm mt-2">
             Our skilled teachers are here to guide you on your learning journey.
           </p>
         </div>
 
-        <div class="w-[30%] bg-[#D8D8D8] shadow flex flex-col gap-3 p-[20px] rounded-t-[20px] rounded-br-[20px]">
+        <div className="max:w-[30%] bg-[#D8D8D8] shadow flex flex-col gap-3 p-[20px] rounded-t-[20px] rounded-br-[20px]">
           <div className="flex justify-between">
-            <h2 class="cinzel font-bold text-[20px] text-[#171717]">
+            <h2 className="cinzel font-bold text-[20px] text-[#171717]">
               All Students
             </h2>
-            <h2 class="cinzel font-bold text-[20px] text-[#171717]">35+</h2>
+            <h2 className="cinzel font-bold text-[20px] text-[#171717]">35+</h2>
           </div>
 
-          <p class="poppins text-[#555] text-sm mt-2">
+          <p className="poppins text-[#555] text-sm mt-2">
             Join thousands of students gaining knowledge and skills every day.
           </p>
         </div>
 
-        <div class="w-[30%] bg-[#D8D8D8] shadow flex flex-col gap-3 p-[20px] rounded-t-[20px] rounded-br-[20px]">
+        <div className="max:w-[30%] bg-[#D8D8D8] shadow flex flex-col gap-3 p-[20px] rounded-t-[20px] rounded-br-[20px]">
           <div className="flex justify-between">
-            <h2 class="cinzel font-bold text-[20px] text-[#171717]">
+            <h2 className="cinzel font-bold text-[20px] text-[#171717]">
               All Courses
             </h2>
-            <h2 class="cinzel font-bold text-[20px] text-[#171717]">100+</h2>
+            <h2 className="cinzel font-bold text-[20px] text-[#171717]">
+              100+
+            </h2>
           </div>
 
-          <p class="poppins text-[#555] text-sm mt-2">
+          <p className="poppins text-[#555] text-sm mt-2">
             Explore a variety of courses designed to help you succeed.
           </p>
         </div>
@@ -87,12 +89,12 @@ const Home = () => {
 
       {/* Student Schedule */}
       {!currentStudent ? (
-        <div className="w-[100%]  mx-auto mt-12">
+        <div className="w-[100%]  mx-auto mt-12  overflow-x-auto">
           <h2 className="text-xl cinzel font-semibold text-gray-800 mb-4">
             Teacher's Student List & Timetable
           </h2>
-          <table className="w-full border border-gray-300 rounded-lg overflow-hidden">
-            <thead className="bg-gray-200">
+          <table className="w-[100%] border border-gray-300 rounded-lg ">
+            <thead className="w-[100%] bg-gray-200">
               <tr>
                 <th className="p-3 text-left">Name</th>
                 <th className="p-3 text-left">Day</th>
@@ -127,7 +129,7 @@ const Home = () => {
           </table>
         </div>
       ) : (
-        <div className="w-[100%] mx-auto mt-8">
+        <div className="w-[100%] mx-auto mt-8 overflow-x-auto">
           <h2 className="text-xl font-semibold text-gray-800 mb-4">
             Student Schedule
           </h2>

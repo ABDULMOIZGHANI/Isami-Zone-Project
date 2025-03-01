@@ -1,5 +1,6 @@
 import React from "react";
 import Button from "./Button";
+import { Link } from "react-router-dom";
 
 const EnrollNow = () => {
   return (
@@ -16,7 +17,9 @@ const EnrollNow = () => {
           Quran learning experience from wherever you are.
         </p>
         <div>
-          <Button value="Enroll Now" />
+          <Link to="/registration">
+            <Button value="Enroll Now" />
+          </Link>
         </div>
       </div>
       <img src="/AboutUs/Enroll-Now.png" alt="Enroll-Now Quran Pak" />

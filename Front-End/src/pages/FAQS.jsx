@@ -3,6 +3,7 @@ import styled from "styled-components";
 import Button from "../components/Button";
 import FAQs from "../data/FAQS";
 import FeedbackForm from "../components/FeedbackForm";
+import { Link } from "react-router-dom";
 
 const FAQS = () => {
   return (
@@ -19,7 +20,9 @@ const FAQS = () => {
             Have any questions? We are here to assist you
           </p>
           <div>
-            <Button value="Contact Us" className="block m-auto" />
+            <Link to="/contact-us">
+              <Button value="Contact Us" className="block m-auto" />
+            </Link>
           </div>
         </div>
 
@@ -28,8 +31,11 @@ const FAQS = () => {
         </h1>
 
         <div className="flex gap-[15px] flex-wrap items-stretch justify-around mb-[50px]">
-          {FAQs.map((faq) => (
-            <div className="rounded-t-2xl rounded-br-2xl glassyBG w-[350px] shadow p-[20px] mb-[20px]">
+          {FAQs.map((faq, i) => (
+            <div
+              key={i}
+              className="rounded-t-2xl rounded-br-2xl glassyBG w-[350px] shadow p-[20px] mb-[20px]"
+            >
               <h3 className="cinzel text-[18px] font-bold mb-[10px]">
                 {faq.quest}
               </h3>

@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import Button from "./Button";
 import axios from "axios";
+import { handleError, handleSuccess } from "./utils";
 
 const MainSection = () => {
   const [userName, setName] = useState("");
@@ -14,9 +15,13 @@ const MainSection = () => {
     axios
       .post("http://localhost:8008/free-trial", { userName, email, number })
       .then((result) => {
-        console.log(result);
+        setName("");
+        setEmail("");
+        setNumber("");
+        // console.log(result);
+        handleSuccess("Your free trial form submited successfully");
       })
-      .catch((err) => console.log("ERROR", err));
+      .catch((err) => handleError("Fail to submit the form"));
   };
 
   return (
@@ -35,6 +40,7 @@ const MainSection = () => {
               type="text"
               name=""
               id=""
+              value={userName}
               placeholder="Name"
               required
               className="w-[100%] border border-[#B7B7B7] rounded-[7px] pr-[15px] pl-[18px] pt-[10px] pb-[10px] poppins"
@@ -45,6 +51,7 @@ const MainSection = () => {
               type="email"
               placeholder="Email"
               required
+              value={email}
               className="w-[100%] border border-[#B7B7B7] rounded-[7px] pr-[15px] pl-[18px] pt-[10px] pb-[10px] poppins"
               onChange={(e) => setEmail(e.target.value)}
             />
@@ -53,6 +60,7 @@ const MainSection = () => {
               type="number"
               placeholder="Whatsapp Number"
               required
+              value={number}
               className="w-[100%] border border-[#B7B7B7] rounded-[7px] pr-[15px] pl-[18px] pt-[10px] pb-[10px] poppins"
               onChange={(e) => setNumber(e.target.value)}
             />

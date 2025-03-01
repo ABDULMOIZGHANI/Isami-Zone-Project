@@ -89,11 +89,13 @@ const Header = () => {
       <header className="flex items-center justify-between w-[90%] md:w-[85%] m-auto py-4">
         {/* Logo */}
         <div className="logo">
-          <img
-            src={"/ISLAMI ZONE LOGO.png"}
-            className="h-[65px]"
-            alt="Islami Zone"
-          />
+          <Link to="/">
+            <img
+              src={"/ISLAMI ZONE LOGO.png"}
+              className="h-[65px]"
+              alt="Islami Zone"
+            />
+          </Link>
         </div>
 
         {/* Desktop Buttons - Show Login/Signup if logged out, Logout if logged in */}
@@ -167,6 +169,7 @@ const Header = () => {
                     handleLogout();
                     setIsMenuOpen(false);
                   }}
+                  className="flex justify-center mb-4"
                 >
                   <Button value="Logout" />
                 </div>
@@ -176,7 +179,11 @@ const Header = () => {
               </div>
             ) : (
               <>
-                <Link to="/login" onClick={() => setIsMenuOpen(false)}>
+                <Link
+                  className="flex justify-center"
+                  to="/login"
+                  onClick={() => setIsMenuOpen(false)}
+                >
                   <Button value={"Login"} />
                 </Link>
                 <Link to="/signup" onClick={() => setIsMenuOpen(false)}>

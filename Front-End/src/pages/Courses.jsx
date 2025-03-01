@@ -40,13 +40,13 @@ const Courses = () => {
             No Course Found
           </div>
         ) : (
-          <div className="flex justify-between gap-[10px] flex-wrap mb-[40px]">
+          <div className="flex justify-between gap-[10px] flex-wrap mb-[40px] flex-col md:flex-row">
             {isLoading
               ? "...LOADING"
               : filteredCourses.map((course) => (
                   <div
                     key={course._id}
-                    className="w-[30%] bg-[#D8D8D8] shadow text-center flex flex-col gap-3 p-[20px] rounded-t-[20px] rounded-br-[20px]"
+                    className="md:w-[30%] mb-[20px] bg-[#D8D8D8] shadow text-center flex flex-col gap-3 p-[20px] rounded-t-[20px] rounded-br-[20px]"
                   >
                     <img
                       className="block center"
@@ -79,10 +79,18 @@ const LeftStars = styled.img`
   position: absolute;
   left: 0px;
   top: 10px;
+  @media (max-width: 768px) {
+    /* display: none; */
+    width: 80px;
+  }
 `;
 
 const RightStars = styled.img`
   position: absolute;
   right: 0px;
   top: 10px;
+  @media (max-width: 768px) {
+    /* display: none; */
+    width: 80px;
+  }
 `;

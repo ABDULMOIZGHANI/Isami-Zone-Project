@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import Button from "./Button";
 import axios from "axios";
+import { handleSuccess } from "./utils";
 
 const FeedbackForm = () => {
   const [userName, setName] = useState("");
@@ -20,7 +21,12 @@ const FeedbackForm = () => {
         message,
       })
       .then((result) => {
-        console.log(result);
+        // console.log(result);
+        setName("");
+        setEmail("");
+        setCountry("");
+        setMessage("");
+        handleSuccess("Thank For your Feedback");
       })
       .catch((err) => console.log("ERROR", err));
   };
@@ -46,6 +52,7 @@ const FeedbackForm = () => {
               type="text"
               placeholder="Name"
               required
+              value={userName}
               className="w-[100%] border border-[#B7B7B7] rounded-[7px] pr-[15px] pl-[18px] pt-[10px] pb-[10px] poppins"
               onChange={(e) => setName(e.target.value)}
             />
@@ -55,6 +62,7 @@ const FeedbackForm = () => {
                 type="email"
                 placeholder="Email"
                 required
+                value={email}
                 className="w-[50%] border border-[#B7B7B7] rounded-[7px] pr-[15px] pl-[18px] pt-[10px] pb-[10px] poppins"
                 onChange={(e) => setEmail(e.target.value)}
               />
@@ -62,6 +70,7 @@ const FeedbackForm = () => {
                 type="text"
                 placeholder="Country"
                 required
+                value={country}
                 className="w-[50%] border border-[#B7B7B7] rounded-[7px] pr-[15px] pl-[18px] pt-[10px] pb-[10px] poppins"
                 onChange={(e) => setCountry(e.target.value)}
               />
@@ -71,6 +80,7 @@ const FeedbackForm = () => {
               placeholder="Enter your message here...."
               required
               rows={7}
+              value={message}
               className="w-[100%] border border-[#B7B7B7] rounded-[7px] pr-[15px] pl-[18px] pt-[10px] pb-[10px] poppins"
               onChange={(e) => setMessage(e.target.value)}
             />
