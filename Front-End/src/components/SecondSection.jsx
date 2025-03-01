@@ -29,11 +29,12 @@ const SecondSection = () => {
 
       <iframe
         className="m-auto mb-[20px] md:h-[600px] md:w-[85%] w-[90%] max-w-[1450px] h-[300px]"
-        src="https://www.youtube.com/embed/6dqAwh2MCg0"
+        src="https://www.youtube.com/embed/sLaWTuFGQm0?si=RT-BFUfk2xbuFVFx"
         title="YouTube video player"
-        frameBorder="0"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-        allowFullScreen
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        referrerpolicy="strict-origin-when-cross-origin"
+        allowfullscreen
       ></iframe>
     </Section>
   );
